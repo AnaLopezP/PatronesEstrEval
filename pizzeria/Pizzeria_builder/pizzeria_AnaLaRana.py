@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import csv
 import os.path
+from flask import request
 
 class PizzaBuilder(ABC):
     
@@ -57,7 +58,7 @@ class Pizza:
         return pizza
     
     def crear_masa(self):
-        masa = input("Masa de la pizza: ")        
+        masa = request.form.get("masa")     
         self.masa = masa
         
     def crear_salsa(self):
