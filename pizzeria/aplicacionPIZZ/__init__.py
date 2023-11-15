@@ -7,7 +7,7 @@ from aplicacionPIZZ import routes
 
 app = Flask(__name__)
 
-pizza_builder = pizzeria_AnaLaRana.PizzaBuilder()
-
+pizza_builder = pizzeria_AnaLaRana.Pizza()
+director = pizzeria_AnaLaRana.PizzaDirector(pizza_builder)
 if __name__ == '__main__':
     app.run(debug=True)
