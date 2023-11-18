@@ -44,7 +44,7 @@ def manejar_formulario():
     director._builder.crear_bebidas(bebidas)
     director._builder.crear_postre(postre)
     
-    director.crear_pizza()
+    director.crear_pizza(masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre)
     return "Pizza pedida con éxito."
     
 if __name__ == '__main__':

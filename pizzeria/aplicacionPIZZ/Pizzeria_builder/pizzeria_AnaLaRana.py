@@ -110,14 +110,15 @@ class PizzaDirector:
     def __init__(self, builder):
         self._builder = builder
         
-    def crear_pizza(self):
-        self._builder.crear_masa()
-        self._builder.crear_salsa()
-        self._builder.crear_ingrediente()
-        self._builder.crear_tecnica()
-        self._builder.crear_presentacion()
-        self._builder.crear_extras()
-        self._builder.crear_bebidas()
+    def crear_pizza(self, masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre):
+        self._builder.crear_masa(masa)
+        self._builder.crear_salsa(salsa)
+        self._builder.crear_ingrediente(ingrediente)
+        self._builder.crear_tecnica(tecnica)
+        self._builder.crear_presentacion(presentacion)
+        self._builder.crear_extras(extras)
+        self._builder.crear_bebidas(bebidas)
+        self._builder.crear_postre(postre)
         
     @property
     def builder(self):
