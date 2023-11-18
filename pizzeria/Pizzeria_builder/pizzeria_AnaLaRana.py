@@ -61,14 +61,12 @@ class Pizza:
     def crear_masa(self, masa):     
         self.masa = masa
         
-    def crear_salsa(self):
-        salsa = input("Salsa de la pizza: ")        
+    def crear_salsa(self, salsa):      
         self.salsa = salsa
     
-    def crear_ingrediente(self):
+    def crear_ingrediente(self, ingrediente):
         respuesta = "si"
-        while respuesta == "si":
-            ingrediente = input("Ingrediente de la pizza: ")        
+        while respuesta == "si":      
             self.ingrediente.append(ingrediente)
             respuesta = input("Desea agregar otro ingrediente? si/no: ")
     
