@@ -9,7 +9,7 @@ import __init__ as init
 def home():
     return render_template('index.html')
 
-@app.route('/pizzacreativa', methods=['GET', 'POST'])
+@app.route('/pizzacreativa', methods=['POST'])
 def pizzacreativa():
     init.manejar_formulario()
     return render_template('creatupizza.html')

@@ -2,14 +2,15 @@
 Aquí inicializo instancias de clases, configuro bases de datos, etc.'''
 
 from flask import Flask, request
-from Pizzeria_builder import pizzeria_AnaLaRana
+from pizzeria import Pizzeria_builder as l
+#from Pizzeria_builder import pizzeria_AnaLaRana
 from aplicacionPIZZ import routes
 
 app = Flask(__name__)
 
 
-pizza_builder = pizzeria_AnaLaRana.Pizza()
-director = pizzeria_AnaLaRana.PizzaDirector(pizza_builder)
+pizza_builder = l.Pizza()
+director = l.PizzaDirector(pizza_builder)
 
 def manejar_formulario():
     #recojo los datos del formulario del html
@@ -33,6 +34,7 @@ def manejar_formulario():
     director._builder.crear_postre(postre)
     
     director.crear_pizza()
+    return "Pizza pedida con éxito."
     
 if __name__ == '__main__':
     app.run(debug=True)
