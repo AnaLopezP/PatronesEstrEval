@@ -10,19 +10,20 @@ import Pizzeria_builder.pizzeria_AnaLaRana as l
 app = Flask(__name__)
 
 
+pizza_builder = l.Pizza()
+director = l.PizzaDirector(pizza_builder)
 
 @app.route('/home')
 def home():
-    return "HOLA"
+    return render_template('index.html')
 
-@app.route('/pizzacreativa')
+@app.route('/pizzacreativa', methods=['POST', 'GET'])
 def pizzacreativa():
-    #manejar_formulario()
-    return 'sdas'
+    return render_template('creatupizza.html')
 
-@app.route('/formulario', methods=['POST'])
+@app.route('/form', methods=['POST'])
 def manejar_formulario():
-    '''#recojo los datos del formulario del html
+    #recojo los datos del formulario del html
     masa = request.form.get(masa)
     salsa = request.form.get(salsa)
     ingrediente = request.form.get(ingrediente)
@@ -30,10 +31,10 @@ def manejar_formulario():
     presentacion = request.form.get(presentacion)
     extras = request.form.get(extras)
     bebidas = request.form.get(bebidas)
-    postre = request.form.get(postre)'''
+    postre = request.form.get(postre)
     
     #paso los datos al director para que cree la pizza
-    '''director._builder.crear_masa(masa)
+    director._builder.crear_masa(masa)
     director._builder.crear_salsa(salsa)
     director._builder.crear_ingrediente(ingrediente)
     director._builder.crear_tecnica(tecnica)
@@ -41,13 +42,9 @@ def manejar_formulario():
     director._builder.crear_extras(extras)
     director._builder.crear_bebidas(bebidas)
     director._builder.crear_postre(postre)
-    '''
-    #director.crear_pizza()
+    
+    director.crear_pizza()
     return "Pizza pedida con éxito."
     
 if __name__ == '__main__':
     app.run(debug=True)
-    
-    
-#pizza_builder = l.Pizza()
-#director = l.PizzaDirector(pizza_builder)
