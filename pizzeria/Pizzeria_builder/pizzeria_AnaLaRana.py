@@ -50,6 +50,7 @@ class Pizza:
         self.presentacion = ""
         self.extras = ""
         self.bebidas = ""
+        self.postre = ""
         
     @property
     def pizza(self):
@@ -57,8 +58,7 @@ class Pizza:
         self.reset()
         return pizza
     
-    def crear_masa(self):
-        masa = request.form.get("masa")     
+    def crear_masa(self, masa):     
         self.masa = masa
         
     def crear_salsa(self):
@@ -87,6 +87,10 @@ class Pizza:
     def crear_bebidas(self):
         bebidas = input("Bebida con la pizza: ")        
         self.bebidas = bebidas
+        
+    def crear_postre(self):
+        postre = input("Postre para terminar: ")        
+        self.bebidas = postre
         
 class Producto():
     def __init__(self):
