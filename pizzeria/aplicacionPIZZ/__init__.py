@@ -45,6 +45,11 @@ def manejar_formulario():
     director._builder.crear_postre(postre)
     
     director.crear_pizza(masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre)
+    
+    csv_builder = l.CSV_Builder()
+    if not os.path.isfile('pizza.csv'):
+            csv_builder.crear_csv()
+    csv_builder.añadir_pizza(pizza)
     return "Pizza pedida con éxito."
     
 if __name__ == '__main__':
