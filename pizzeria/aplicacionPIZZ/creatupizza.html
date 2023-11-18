@@ -11,7 +11,26 @@
 <body>
     <h1>Crea tu propia Pizza</h1>
     <p>Elija los detalles de su pizza:</p>
-    <form action="manejar_formulario" method="post">
+    <form action="/pizzacreativa" method="post">
+
+        <fieldset>
+            <legend>Masa</legend>
+            <p>Seleccione el tipo de masa que desee:</p>
+            <input type="radio" name="masa" value="Masa normal">Masa normal<br>
+            <input type="radio" name="masa" value="Masa fina">Masa fina<br>
+            <input type="radio" name="masa" value="Masa gruesa">Masa gruesa<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Salsa</legend>
+            <p>Seleccione la salsa que desee:</p>
+            <input type="radio" name="salsa" value="Salsa de tomate">Salsa de tomate<br>
+            <input type="radio" name="salsa" value="Salsa barbacoa">Salsa barbacoa<br>
+            <input type="radio" name="salsa" value="Salsa pesto">Salsa pesto<br>
+            <input type="radio" name="salsa" value="Salsa carbonara">Salsa carbonara<br>
+            <input type="radio" name="salsa" value="Salsa de queso">Salsa de queso<br>
+        </fieldset>
+
         <fieldset>
             <legend>Ingredientes</legend>
             <p>Seleccione los ingredientes que desee:</p>
@@ -37,4 +56,66 @@
             <input type="checkbox" name="ingredientes[]" value="Oregano">Oregano<br>
             <input type="checkbox" name="ingredientes[]" value="Pimiento picante">Pimiento picante<br>
         </fieldset>
+
+        <fieldset>
+            <legend>Tecnica</legend>
+            <p>Seleccione el tipo de técnica que desee:</p>
+            <input type="radio" name="tecnica" value="Tecnica normal">Tecnica normal<br>
+            <input type="radio" name="tecnica" value="Tecnica voladora">Tecnica voladora<br>
+            <input type="radio" name="tecnica" value="Tecnica especial del chef">Tecnica especial del chef<br>
+            <input type="radio" name="tecnica" value="Tecnica supersayan">Tecnica supersayan<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Presentacion</legend>
+            <p>Seleccione el tipo de presentación que desee:</p>
+            <input type="radio" name="presentacion" value="Presentacion normal">Presentacion normal<br>
+            <input type="radio" name="presentacion" value="Presentacion voladora">Presentacion voladora<br>
+            <input type="radio" name="presentacion" value="Presentacion especial del chef">Presentacion especial del chef<br>
+            <input type="radio" name="presentacion" value="Presentacion supersayan">Presentacion supersayan<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Presentacion</legend>
+            <p>Seleccione un extra que desee:</p>
+            <input type="radio" name="extra" value="Sin extra">Sin extra<br>
+            <input type="radio" name="extra" value="Extra de queso">Extra de queso<br>
+            <input type="radio" name="extra" value="Extra de picante">Extra de picante<br>
+            <input type="radio" name="extra" value="Sorprendame">Sorprendame<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Bebida</legend>
+            <p>Seleccione la bebida que desee:</p>
+            <input type="radio" name="bebida" value="Sin bebida">Sin bebida<br>
+            <input type="radio" name="bebida" value="Coca-cola">Coca-cola<br>
+            <input type="radio" name="bebida" value="Fanta">Fanta<br>
+            <input type="radio" name="bebida" value="Sprite">Sprite<br>
+            <input type="radio" name="bebida" value="Agua">Agua<br>
+            <input type="radio" name="bebida" value="Cerveza">Cerveza<br>
+            <input type="radio" name="bebida" value="Vino">Vino<br>
+            <input type="radio" name="bebida" value="Sorprendame">Sorprendame<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Postre</legend>
+            <p>Seleccione el postre que desee:</p>
+            <input type="radio" name="postre" value="Sin postre">Sin postre<br>
+            <input type="radio" name="postre" value="Tarta de queso">Tarta de queso<br>
+            <input type="radio" name="postre" value="Tarta de chocolate">Tarta de chocolate<br>
+            <input type="radio" name="postre" value="Tarta de manzana">Tarta de manzana<br>
+            <input type="radio" name="postre" value="Tarta de limon">Tarta de limon<br>
+            <input type="radio" name="postre" value="Tarta de fresa">Tarta de fresa<br>
+            <input type="radio" name="postre" value="Brownie">Brownie<br>
+            <input type="radio" name="postre" value="Sorprendame">Sorprendame<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Comentarios</legend>
+            <p>Si tiene algún comentario, escribalo aquí:</p>
+            <textarea name="comentarios" rows="10" cols="30"></textarea>
+        </fieldset>
+
+        <input type="submit" value="Enviar">
+    </form>
 </body>
