@@ -64,30 +64,22 @@ class Pizza:
     def crear_salsa(self, salsa):      
         self.salsa = salsa
     
-    def crear_ingrediente(self, ingrediente):
-        respuesta = "si"
-        while respuesta == "si":      
-            self.ingrediente.append(ingrediente)
-            respuesta = input("Desea agregar otro ingrediente? si/no: ")
+    def crear_ingrediente(self, ingrediente):    
+        self.ingrediente.append(ingrediente)
     
-    def crear_tecnica(self):
-        tecnica = input("Tecnica de la pizza: ")        
+    def crear_tecnica(self, tecnica):      
         self.tecnica = tecnica
         
-    def crear_presentacion(self):
-        presentacion = input("Presentacion de la pizza: ")        
+    def crear_presentacion(self, presentacion):     
         self.presentacion = presentacion
     
-    def crear_extras(self):
-        extras = input("Extras de la pizza: ")        
+    def crear_extras(self, extras):  
         self.extras = extras
     
-    def crear_bebidas(self):
-        bebidas = input("Bebida con la pizza: ")        
+    def crear_bebidas(self, bebidas):     
         self.bebidas = bebidas
         
-    def crear_postre(self):
-        postre = input("Postre para terminar: ")        
+    def crear_postre(self, postre):      
         self.bebidas = postre
         
 class Producto():

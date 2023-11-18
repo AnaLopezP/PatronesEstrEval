@@ -24,14 +24,15 @@ def pizzacreativa():
 @app.route('/form', methods=['POST'])
 def manejar_formulario():
     #recojo los datos del formulario del html
-    masa = request.form.get(masa)
-    salsa = request.form.get(salsa)
-    ingrediente = request.form.get(ingrediente)
-    tecnica = request.form.get(tecnica)
-    presentacion = request.form.get(presentacion)
-    extras = request.form.get(extras)
-    bebidas = request.form.get(bebidas)
-    postre = request.form.get(postre)
+    print(request.get_data())
+    masa = request.form.get("masa")
+    salsa = request.form.get("salsa")
+    ingrediente = request.form.get("ingrediente")
+    tecnica = request.form.get("tecnica")
+    presentacion = request.form.get("presentacion")
+    extras = request.form.get("extras")
+    bebidas = request.form.get("bebidas")
+    postre = request.form.get("postre")
     
     #paso los datos al director para que cree la pizza
     director._builder.crear_masa(masa)
