@@ -8,7 +8,7 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     background: url('/static/images/logo4.jpeg') center center no-repeat; /* Centra la imagen y evita la repetición */
-    background-size: auto 70%; /* Ajusta el tamaño vertical al 70%, puedes ajustar este valor según tus necesidades */
+    background-size: auto 100%; /* Ajusta el tamaño vertical al 70%, puedes ajustar este valor según tus necesidades */
     background-attachment: fixed; /* Fija la imagen para que no se mueva al hacer scroll */
     background-color: rgb(0 146 70); /* Color de fondo verde */
     color: #333;
@@ -94,41 +94,43 @@ footer {
 form {
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px; /* Bordes más redondos */
+    border-radius: 15px; /* Bordes más redondos */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
 
 fieldset {
     margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 10px; /* Bordes más redondos */
+    border: 2px solid #ddd; /* Borde más grueso */
+    padding: 15px; /* Más espacio interno */
+    border-radius: 15px; /* Bordes más redondos */
 }
 
 legend {
     font-weight: bold;
-    color: #ff8c00;
+    color: rgb(0 146 70);
+    margin-bottom: 10px;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
-    margin-right: 5px;
+    margin-right: 8px; /* Espacio entre los radio y checkbox */
 }
 
 textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px; /* Bordes más redondos */
+    border: 2px solid #ddd; /* Borde más grueso */
+    border-radius: 15px; /* Bordes más redondos */
+    margin-bottom: 15px; /* Más espacio en la parte inferior */
 }
 
 input[type="submit"] {
-    background-color: #ff8c00;
+    background-color: rgb(0 146 70);
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Ajuste del tamaño del botón */
     border: none;
-    border-radius: 10px; /* Bordes más redondos */
+    border-radius: 15px; /* Bordes más redondos */
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
