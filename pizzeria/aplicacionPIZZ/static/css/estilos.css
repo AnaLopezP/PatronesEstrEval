@@ -92,18 +92,22 @@ footer {
 
 /* Estilos específicos para el formulario */
 form {
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.5); /* Fondo blanco con 70% de opacidad */
     padding: 20px;
-    border-radius: 15px; /* Bordes más redondos */
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
 
+
+
 fieldset {
     margin-bottom: 20px;
-    border: 2px solid #ddd; /* Borde más grueso */
-    padding: 15px; /* Más espacio interno */
-    border-radius: 15px; /* Bordes más redondos */
+    border: 0; /* Elimina el borde del fieldset */
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #fff; /* Color de fondo blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 legend {
