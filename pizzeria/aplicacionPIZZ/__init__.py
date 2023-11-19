@@ -28,7 +28,13 @@ def manejar_formulario():
     print(request.get_data())
     masa = request.form.get("masa")
     salsa = request.form.get("salsa")
-    ingredientes = request.form.get("ingredientes")
+    ingredientes = [request.form.get("ingredientes_jamon"),request.form.get("ingredientes_queso"), request.form.get("ingredientes_cebolla"),
+                    request.form.get("ingredientes_aceitunas"), request.form.get("ingredientes_champis"), request.form.get("ingredientes_pimiento"),
+                    request.form.get("ingredientes_pollo"), request.form.get("ingredientes_atun"), request.form.get("ingredientes_bacon"),
+                    request.form.get("ingredientes_carne"), request.form.get("ingredientes_salami"), request.form.get("ingredientes_pepperoni"),
+                    request.form.get("ingredientes_chorizo"), request.form.get("ingredientes_amchoas"), request.form.get("ingredientes_maiz"),
+                    request.form.get("ingredientes_piña"), request.form.get("ingredientes_rucula"), request.form.get("ingredientes_albahaca"),
+                    request.form.get("ingredientes_oregano"), request.form.get("ingredientes_perejil"), request.form.get("ingredientes_pimientopicante")]
     tecnica = request.form.get("tecnica")
     presentacion = request.form.get("presentacion")
     extra = request.form.get("extra")
