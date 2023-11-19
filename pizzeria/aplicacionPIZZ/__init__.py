@@ -35,6 +35,10 @@ def manejar_formulario():
                     request.form.get("ingredientes_chorizo"), request.form.get("ingredientes_amchoas"), request.form.get("ingredientes_maiz"),
                     request.form.get("ingredientes_piña"), request.form.get("ingredientes_rucula"), request.form.get("ingredientes_albahaca"),
                     request.form.get("ingredientes_oregano"), request.form.get("ingredientes_perejil"), request.form.get("ingredientes_pimientopicante")]
+    
+    for i in range(len(ingredientes)):
+        if ingredientes[i] == None:
+            ingredientes[i] = ""
     tecnica = request.form.get("tecnica")
     presentacion = request.form.get("presentacion")
     extra = request.form.get("extra")
