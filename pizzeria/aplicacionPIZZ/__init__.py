@@ -25,6 +25,10 @@ def home():
 def pizzacreativa():
     return render_template('creatupizza.html')
 
+@app.route('/pizzamenu', methods=['POST', 'GET'])
+def pizzamenu():
+    return render_template('pizzamenu.html')
+
 @app.route('/form', methods=['POST'])
 def manejar_formulario():
     #recojo los datos del formulario del html
@@ -81,7 +85,7 @@ def registro():
 
     return render_template('registro.html')
 
-@app.route('/form_combos', methods=['POST'])
+@app.route('/form_combo', methods=['POST', 'GET'])
 def manejar_formulario_combos():
     #recojo los datos del formulario del html
     print(request.get_data())
