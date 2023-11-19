@@ -3,6 +3,7 @@ Aquí inicializo instancias de clases, configuro bases de datos, etc.'''
 import sys
 sys.path.append('C:/Users/Usuario/Documents/GITHUB2/PatronesEstrEval/pizzeria')
 from flask import Flask, request, render_template
+import os
 import Pizzeria_builder.pizzeria_AnaLaRana as l
 #from Pizzeria_builder import pizzeria_AnaLaRana
 #from aplicacionPIZZ import routes
@@ -49,7 +50,7 @@ def manejar_formulario():
     csv_builder = l.CSV_Builder()
     if not os.path.isfile('pizza.csv'):
             csv_builder.crear_csv()
-    csv_builder.añadir_pizza(pizza)
+    csv_builder.añadir_pizza(masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre)
     return "Pizza pedida con éxito."
     
 if __name__ == '__main__':

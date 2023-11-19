@@ -97,13 +97,13 @@ class CSV_Builder():
     def crear_csv(self):
         with open('pizza.csv', 'w', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(["Masa", "Salsa", "Ingrediente", "Tecnica", "Presentacion", "Extras", "Bebidas"])
+            writer.writerow(["Masa", "Salsa", "Ingrediente", "Tecnica", "Presentacion", "Extras", "Bebidas", "Postre"])
         file.close()
         
-    def añadir_pizza(self, pizza):
+    def añadir_pizza(self, masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre):
         with open('pizza.csv', 'a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([pizza[0], pizza[1], pizza[2], pizza[3], pizza[4], pizza[5], pizza[6]])
+            writer.writerow([masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre])
         file.close()
 
 class PizzaDirector:
