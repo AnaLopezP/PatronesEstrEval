@@ -1,0 +1,107 @@
+/* Reset de estilos para eliminar márgenes y rellenos predeterminados */
+body, h1, h2, ul, p, textarea, form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilo para el encabezado */
+header {
+    background-color: #e8491d;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Estilo para el título del encabezado */
+header h1 {
+    font-size: 2em;
+}
+
+/* Estilo para el contenido principal */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para la sección del menú */
+#Menu {
+    margin-top: 20px;
+}
+
+/* Estilo para la lista de menú */
+#Menu ul {
+    list-style-type: none;
+}
+
+/* Estilo para los elementos de la lista del menú */
+#Menu li {
+    margin-bottom: 10px;
+}
+
+/* Estilo para los enlaces del menú */
+#Menu a {
+    text-decoration: none;
+    color: #e8491d;
+    font-weight: bold;
+}
+
+/* Estilo para el pie de página */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+/* Estilo para el formulario de creación de pizza */
+form {
+    margin-top: 20px;
+}
+
+/* Estilo para los fieldsets en el formulario */
+fieldset {
+    margin-bottom: 20px;
+}
+
+/* Estilo para los títulos de los fieldsets */
+legend {
+    font-weight: bold;
+}
+
+/* Estilo para los checkboxes y radios en el formulario */
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Estilo para el área de comentarios en el formulario */
+textarea {
+    width: 100%;
+    padding: 5px;
+    resize: vertical;
+}
+
+/* Estilo para el botón de enviar en el formulario */
+input[type="submit"] {
+    background-color: #e8491d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilo para el botón de enviar al pasar el mouse */
+input[type="submit"]:hover {
+    background-color: #333;
+}
