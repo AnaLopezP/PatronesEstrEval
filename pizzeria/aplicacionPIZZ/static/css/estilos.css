@@ -138,7 +138,7 @@ input[type="submit"]:hover {
     background-color: #333;
 }
 
-#creatupizza {
+#creatupizza, #creatucombo {
     background-color: rgb(206 43 55);
     color: #fff;
     padding: 12px 24px; /* Ajuste del tamaño del botón */
