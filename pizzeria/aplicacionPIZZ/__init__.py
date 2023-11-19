@@ -75,12 +75,7 @@ def registro():
         email = request.form.get("email")
         telefono = request.form.get("telefono")
 
-        if nombre and direccion and usuario and contraseña and email and telefono:
-            nuevo_usuario = c.Usuario(nombre, direccion, usuario, contraseña, email, telefono)
-            c.usuarios.append(nuevo_usuario)
-            return f"Usuario {usuario} registrado con éxito."
-        else:
-            return "Todos los campos son obligatorios."
+        usuario = c.Usuario(nombre, direccion, usuario, contraseña, telefono, email)
 
     return render_template('registro.html')
 if __name__ == '__main__':
