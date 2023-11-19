@@ -1,107 +1,119 @@
-/* Reset de estilos para eliminar márgenes y rellenos predeterminados */
-body, h1, h2, ul, p, textarea, form {
+/* Reset de estilos */
+body, h1, h2, ul, li, p, textarea, input {
     margin: 0;
     padding: 0;
 }
 
-/* Estilo para el cuerpo de la página */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: rgb(0 146 70);
     color: #333;
 }
 
-/* Estilo para el encabezado */
 header {
-    background-color: #e8491d;
+    background-color: rgb(206 43 55);
+    color: #fff;
     padding: 10px;
     text-align: center;
-    color: #fff;
 }
 
-/* Estilo para el título del encabezado */
-header h1 {
-    font-size: 2em;
-}
-
-/* Estilo para el contenido principal */
 main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 20px;
+}
+
+section#Menu {
     background-color: #fff;
+    padding: 10px;
+    border-radius: 10px; /* Bordes más redondos */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Hacer que los elementos internos sean flexibles */
+    justify-content: space-between; /* Espacio entre los elementos flexibles */
 }
 
-/* Estilo para la sección del menú */
-#Menu {
-    margin-top: 20px;
-}
-
-/* Estilo para la lista de menú */
-#Menu ul {
-    list-style-type: none;
-}
-
-/* Estilo para los elementos de la lista del menú */
-#Menu li {
+section#Menu h2 {
+    color: rgb(0, 0, 0);
     margin-bottom: 10px;
 }
 
-/* Estilo para los enlaces del menú */
-#Menu a {
+ul {
+    list-style: none;
+}
+
+menu-links {
+    display: flex; /* Hacer que los enlaces sean flexibles */
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
     text-decoration: none;
-    color: #e8491d;
+    color: rgb(206 43 55);
     font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
 }
 
-/* Estilo para el pie de página */
+a:hover {
+    color: #333;
+}
+
 footer {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
+    color: rgb(255 255 255);
+    background-color: rgb(206 43 55);
     text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-/* Estilo para el formulario de creación de pizza */
+/* Estilos específicos para el formulario */
 form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px; /* Bordes más redondos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
 
-/* Estilo para los fieldsets en el formulario */
 fieldset {
     margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px; /* Bordes más redondos */
 }
 
-/* Estilo para los títulos de los fieldsets */
 legend {
     font-weight: bold;
+    color: #ff8c00;
 }
 
-/* Estilo para los checkboxes y radios en el formulario */
-input[type="checkbox"],
-input[type="radio"] {
+input[type="radio"],
+input[type="checkbox"] {
     margin-right: 5px;
 }
 
-/* Estilo para el área de comentarios en el formulario */
 textarea {
     width: 100%;
-    padding: 5px;
-    resize: vertical;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Bordes más redondos */
 }
 
-/* Estilo para el botón de enviar en el formulario */
 input[type="submit"] {
-    background-color: #e8491d;
+    background-color: #ff8c00;
     color: #fff;
     padding: 10px 20px;
     border: none;
+    border-radius: 10px; /* Bordes más redondos */
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Estilo para el botón de enviar al pasar el mouse */
 input[type="submit"]:hover {
     background-color: #333;
 }
