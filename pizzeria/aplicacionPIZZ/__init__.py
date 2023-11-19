@@ -106,12 +106,12 @@ def manejar_formulario_combos():
     precio = str(random.randint(10, 20)) + "€"
     director_combo._builder.crear_precio(precio)
     
-    director_combo.crear_combo(pizza, bebida, postre, id, precio)
+    director_combo.crear_combo(id, pizza, bebida, postre, precio)
     
     csv_builder_combo = m.CSV_combo_Builder()
-    if not os.path.isfile('pizza.csv'):
+    if not os.path.isfile('combo.csv'):
             csv_builder_combo.crear_csv_combo()
-    csv_builder_combo.añadir_combo(pizza, bebida, postre, id, precio)
+    csv_builder_combo.añadir_combo(id, pizza, bebida, postre, precio)
     return "Combo pedida con éxito."
     
 
