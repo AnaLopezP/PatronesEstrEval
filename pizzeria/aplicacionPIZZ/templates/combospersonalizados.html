@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Pizzería Ana la Rana">
+    <title>Pizzería Ana la Rana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+
+<body>
+    <h1 id = "creatucombo">Crea tu combo</h1>
+    <form action = "/form_combo" method = "post">
+
+        <fieldset>
+            <legend>Pizza</legend>
+            <p>Seleccione la pizza que desea:</p>
+            <input type="radio" name="pizza" value="margarita">Margarita<br>
+            <input type="radio" name="pizza" value="cuatroquesos">Cuatro quesos<br>
+            <input type="radio" name="pizza" value="barbacoa">Barbacoa<br>
+            <input type="radio" name="pizza" value="carbonara">Carbonara<br>
+            <input type="radio" name="pizza" value="pepperoni">Pepperoni<br>
+            <input type="radio" name="pizza" value="hawaiana">Hawaiana<br>
+            <input type="radio" name="pizza" value="4estaciones">4 estaciones<br>
+            <input type="radio" name="pizza" value="especialdelchef">Especial del chef<br>
+            <input type="radio" name="pizza" value="vegetariana">Vegetariana<br>
+            <input type="radio" name="pizza" value="suprema">Suprema<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Bebida</legend>
+            <p>Seleccione la bebida que desea:</p>
+            <input type="radio" name="bebida" value="Sin bebida">Sin bebida<br>
+            <input type="radio" name="bebida" value="cocacola">Coca-Cola<br>
+            <input type="radio" name="bebida" value="Agua">Agua<br>
+            <input type="radio" name="bebida" value="fantanaranja">Fanta Naranja<br>
+            <input type="radio" name="bebida" value="fantalimon">Fanta Limón<br>
+            <input type="radio" name="bebida" value="nestea">Nestea<br>
+            <input type="radio" name="bebida" value="sprite">Sprite<br>
+            <input type="radio" name="bebida" value="cerveza">Cerveza<br>
+            <input type="radio" name="bebida" value="vino">Vino<br>
+            <input type="radio" name="bebida" value="Sorprendame">Sorprendame<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Postre</legend>
+            <p>Seleccione el postre que desee:</p>
+            <input type="radio" name="postre" value="Sin postre">Sin postre<br>
+            <input type="radio" name="postre" value="Tarta de queso">Tarta de queso<br>
+            <input type="radio" name="postre" value="Tarta de chocolate">Tarta de chocolate<br>
+            <input type="radio" name="postre" value="Tarta de manzana">Tarta de manzana<br>
+            <input type="radio" name="postre" value="Tarta de limon">Tarta de limon<br>
+            <input type="radio" name="postre" value="Tarta de fresa">Tarta de fresa<br>
+            <input type="radio" name="postre" value="Brownie">Brownie<br>
+            <input type="radio" name="postre" value="Helado">Helado<br>
+            <input type="radio" name="postre" value="Fruta">Fruta<br>
+            <input type="radio" name="postre" value="Sorprendame">Sorprendame<br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Comentarios</legend>
+            <p>Si tiene algún comentario, escribalo aquí:</p>
+            <textarea name="comentarios" rows="10" cols="30"></textarea>
+        </fieldset>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <footer>
+        <p>¿Tiene alguna pregunta? Llame al siguiente número: 666 666 666</p>
+    </footer>
+    
+</body>
