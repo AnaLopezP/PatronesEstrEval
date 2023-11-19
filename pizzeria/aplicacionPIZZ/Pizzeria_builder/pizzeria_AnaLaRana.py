@@ -103,6 +103,7 @@ class CSV_Builder():
     def añadir_pizza(self, masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre):
         with open('pizza.csv', 'a', newline='') as file:
             writer = csv.writer(file)
+            print(masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre)
             writer.writerow([masa, salsa, ingrediente, tecnica, presentacion, extras, bebidas, postre])
         file.close()
 
