@@ -6,14 +6,16 @@ from flask import Flask, request, render_template
 import os
 import Pizzeria_builder.pizzeria_AnaLaRana as l
 import Pizzeria_builder.cliente as c
-#from Pizzeria_builder import pizzeria_AnaLaRana
-#from aplicacionPIZZ import routes
+import Pizzeria_builder.pizzeria_menus as m
 
 app = Flask(__name__)
 
 
 pizza_builder = l.Pizza()
 director = l.PizzaDirector(pizza_builder)
+
+combos_builder = m.Combo()
+director_combo = m.ComboDirector(combos_builder)
 
 @app.route('/home')
 def home():
@@ -78,5 +80,28 @@ def registro():
         usuario = c.Usuario(nombre, direccion, usuario, contraseña, telefono, email)
 
     return render_template('registro.html')
+
+@app.route('/form_combos', methods=['POST'])
+def manejar_formulario_combos():
+    #recojo los datos del formulario del html
+    print(request.get_data())
+    pizza = request.form.get("pizza")
+    bebida = request.form.get("bebida")
+    postre = request.form.get("postre")
+    
+    #paso los datos al director para que cree la pizza
+    director_combo._builder.crear_pizza_menu(pizza)
+    director_combo._builder.crear_bebida_menu(bebida)
+    director_combo._builder.crear_postre_menu(postre)
+    
+    director_combo.crear_combo(pizza, bebida, postre)
+    
+    csv_builder_combo = m.CSV_combo_Builder()
+    if not os.path.isfile('pizza.csv'):
+            csv_builder_combo.crear_csv_combo()
+    csv_builder_combo.añadir_combo(pizza, bebida, postre)
+    return "Combo pedida con éxito."
+    
+
 if __name__ == '__main__':
     app.run(debug=True)
