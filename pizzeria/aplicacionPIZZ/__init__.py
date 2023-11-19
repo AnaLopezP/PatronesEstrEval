@@ -39,6 +39,7 @@ def manejar_formulario():
     for i in range(len(ingredientes)):
         if ingredientes[i] == None:
             ingredientes[i] = ""
+            
     tecnica = request.form.get("tecnica")
     presentacion = request.form.get("presentacion")
     extra = request.form.get("extra")
