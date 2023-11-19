@@ -11,6 +11,13 @@ body {
     color: #333;
 }
 
+header, footer {
+    max-width: 1200px; /* Ancho máximo del elemento */
+    margin: 0 auto; /* Centra el elemento en el espacio restante horizontalmente */
+    border-radius: 10px; /* Bordes más redondos */
+
+}
+
 header {
     background-color: rgb(206 43 55);
     color: #fff;
@@ -29,11 +36,13 @@ section#Menu {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex; /* Hacer que los elementos internos sean flexibles */
     justify-content: space-between; /* Espacio entre los elementos flexibles */
+    align-items: center; /* Centrar los elementos flexibles */
 }
 
 section#Menu h2 {
     color: rgb(0, 0, 0);
     margin-bottom: 10px;
+    
 }
 
 ul {
@@ -42,6 +51,7 @@ ul {
 
 menu-links {
     display: flex; /* Hacer que los enlaces sean flexibles */
+    align-items: center; /* Centrar verticalmente los enlaces */
 }
 
 li {
@@ -62,13 +72,18 @@ a:hover {
 }
 
 footer {
+        border-radius: 10px; /* Bordes más redondos */
+
     color: rgb(255 255 255);
     background-color: rgb(206 43 55);
     text-align: center;
     padding: 10px;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    left: 0; /* Ajusta la posición izquierda a 0 */
+    right: 0; /* Ajusta la posición derecha a 0 */
+    max-width: 1200px; /* Ancho máximo del elemento */
+    margin: 0 auto; /* Centra el elemento en el espacio restante horizontalmente */
 }
 
 /* Estilos específicos para el formulario */
