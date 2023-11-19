@@ -153,3 +153,47 @@ input[type="submit"]:hover {
     transition: background-color 0.3s ease;
     text-align: center; /* Centro horizontal del texto */
 }
+
+/* Estilos de inicio de sesion */
+#login-box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#login-box h2 {
+    color: #333;
+}
+
+#login-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-box label {
+    margin-bottom: 5px;
+}
+
+#login-box input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#login-box button {
+    background-color: #ff8c00;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#login-box button:hover {
+    background-color: #333;
+}

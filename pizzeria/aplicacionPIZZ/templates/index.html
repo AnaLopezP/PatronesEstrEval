@@ -22,6 +22,20 @@
                 <li id = "Crea tu pizza"><a href="{{ url_for('pizzacreativa') }}">Crea tu Pizza</a></li>
             </ul>
         </section>
+        <div id="login-box">
+            <h2>Iniciar Sesión o Registrarse</h2>
+            <form action="/login" method="post">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+
+            <p>¿No tienes una cuenta? <a href="/registro">Regístrate</a></p>
+        </div>
     </main>
     <footer>
         <p>¿Tiene alguna pregunta? Llame al siguiente número: 666 666 666</p>

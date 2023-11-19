@@ -5,6 +5,7 @@ sys.path.append('C:/Users/Usuario/Documents/GITHUB2/PatronesEstrEval/pizzeria')
 from flask import Flask, request, render_template
 import os
 import Pizzeria_builder.pizzeria_AnaLaRana as l
+import Pizzeria_builder.cliente as c
 #from Pizzeria_builder import pizzeria_AnaLaRana
 #from aplicacionPIZZ import routes
 
@@ -64,5 +65,23 @@ def manejar_formulario():
     csv_builder.añadir_pizza(masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre)
     return "Pizza pedida con éxito."
     
+@app.route('/registro', methods=['POST', 'GET'])
+def registro():
+    if request.method == 'POST':
+        nombre = request.form.get("nombre")
+        direccion = request.form.get("direccion")
+        usuario = request.form.get("usuario")
+        contraseña = request.form.get("contraseña")
+        email = request.form.get("email")
+        telefono = request.form.get("telefono")
+
+        if nombre and direccion and usuario and contraseña and email and telefono:
+            nuevo_usuario = c.Usuario(nombre, direccion, usuario, contraseña, email, telefono)
+            c.usuarios.append(nuevo_usuario)
+            return f"Usuario {usuario} registrado con éxito."
+        else:
+            return "Todos los campos son obligatorios."
+
+    return render_template('registro.html')
 if __name__ == '__main__':
     app.run(debug=True)
