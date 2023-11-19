@@ -76,16 +76,11 @@ a:hover {
 }
 
 footer {
-        border-radius: 10px; /* Bordes más redondos */
-
+    border-radius: 10px; /* Bordes más redondos */
     color: rgb(255 255 255);
     background-color: rgb(206 43 55);
     text-align: center;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
-    left: 0; /* Ajusta la posición izquierda a 0 */
-    right: 0; /* Ajusta la posición derecha a 0 */
     max-width: 1200px; /* Ancho máximo del elemento */
     margin: 0 auto; /* Centra el elemento en el espacio restante horizontalmente */
 }
@@ -122,7 +117,7 @@ input[type="checkbox"] {
 }
 
 textarea {
-    width: 100%;
+    width: 90%; /* Ajusta el ancho del textarea al 90% */
     padding: 10px;
     border: 2px solid #ddd; /* Borde más grueso */
     border-radius: 15px; /* Bordes más redondos */

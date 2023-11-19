@@ -7,6 +7,7 @@ import os
 import Pizzeria_builder.pizzeria_AnaLaRana as l
 import Pizzeria_builder.cliente as c
 import Pizzeria_builder.pizzeria_menus as m
+import random
 
 app = Flask(__name__)
 
@@ -16,6 +17,9 @@ director = l.PizzaDirector(pizza_builder)
 
 combos_builder = m.Combo()
 director_combo = m.ComboDirector(combos_builder)
+
+def generar_id():
+    return ''.join(str(random.randint(0, 9)) for _ in range(8))
 
 @app.route('/home')
 def home():
@@ -97,13 +101,17 @@ def manejar_formulario_combos():
     director_combo._builder.crear_pizza_menu(pizza)
     director_combo._builder.crear_bebida_menu(bebida)
     director_combo._builder.crear_postre_menu(postre)
+    id = generar_id()
+    director_combo._builder.crear_id(id)
+    precio = str(random.randint(10, 20)) + "€"
+    director_combo._builder.crear_precio(precio)
     
-    director_combo.crear_combo(pizza, bebida, postre)
+    director_combo.crear_combo(pizza, bebida, postre, id, precio)
     
     csv_builder_combo = m.CSV_combo_Builder()
     if not os.path.isfile('pizza.csv'):
             csv_builder_combo.crear_csv_combo()
-    csv_builder_combo.añadir_combo(pizza, bebida, postre)
+    csv_builder_combo.añadir_combo(pizza, bebida, postre, id, precio)
     return "Combo pedida con éxito."
     
 
