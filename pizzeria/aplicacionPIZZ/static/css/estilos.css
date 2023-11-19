@@ -142,3 +142,14 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #333;
 }
+
+#creatupizza {
+    background-color: rgb(206 43 55);
+    color: #fff;
+    padding: 12px 24px; /* Ajuste del tamaño del botón */
+    border: none;
+    border-radius: 15px; /* Bordes más redondos */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Centro horizontal del texto */
+}
