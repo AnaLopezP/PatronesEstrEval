@@ -97,7 +97,7 @@ class CSV_Builder():
     def crear_csv(self):
         with open('pizza.csv', 'w', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(["Masa", "Salsa", "Ingredientesingredientes", "Tecnica", "Presentacion", "Extra", "Bebida", "Postre"])
+            writer.writerow(["Masa", "Salsa", "Ingredientes", "Tecnica", "Presentacion", "Extra", "Bebida", "Postre"])
         file.close()
         
     def añadir_pizza(self, masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre):
