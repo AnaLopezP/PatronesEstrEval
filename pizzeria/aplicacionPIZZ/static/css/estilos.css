@@ -197,3 +197,52 @@ input[type="submit"]:hover {
 #login-box button:hover {
     background-color: #333;
 }
+
+/* Estilos específicos para el formulario de registro */
+#registro-box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 20px 70px;
+    background-color: rgba(255, 255, 255, 0.788);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#registro-box h2 {
+    color: #333;
+}
+
+#registro-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+#registro-box label {
+    margin-bottom: 5px;
+}
+
+#registro-box input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#registro-box button {
+    background-color: rgb(0, 146, 70);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#registro-box button:hover {
+    background-color: #333;
+}
+
+#registro-box p {
+    margin-top: 10px;
+    text-align: center;
+}
