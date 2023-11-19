@@ -112,7 +112,7 @@ def manejar_formulario_combos():
     if not os.path.isfile('combo.csv'):
             csv_builder_combo.crear_csv_combo()
     csv_builder_combo.añadir_combo(id, pizza, bebida, postre, precio)
-    return "Combo pedida con éxito."
+    return "Combo pedido con éxito."
     
 
 if __name__ == '__main__':
