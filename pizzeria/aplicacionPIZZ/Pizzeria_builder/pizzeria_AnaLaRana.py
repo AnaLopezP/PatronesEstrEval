@@ -19,7 +19,7 @@ class PizzaBuilder(ABC):
         pass
     
     @abstractmethod
-    def crear_ingrediente(self):
+    def crear_ingredientes(self):
         pass
     
     @abstractmethod
@@ -45,7 +45,7 @@ class Pizza:
     def reset(self):
         self.masa = ""
         self.salsa = ""
-        self.ingrediente = []
+        self.ingredientes = []
         self.tecnica = ""
         self.presentacion = ""
         self.extra = ""
@@ -54,7 +54,7 @@ class Pizza:
         
     @property
     def pizza(self):
-        pizza = [self.masa, self.salsa, self.ingrediente, self.tecnica, self.presentacion, self.extra, self.bebida]
+        pizza = [self.masa, self.salsa, self.ingredientes, self.tecnica, self.presentacion, self.extra, self.bebida]
         self.reset()
         return pizza
     
@@ -64,8 +64,8 @@ class Pizza:
     def crear_salsa(self, salsa):      
         self.salsa = salsa
     
-    def crear_ingrediente(self, ingrediente):    
-        self.ingrediente.append(ingrediente)
+    def crear_ingredientes(self, ingredientes):    
+        self.ingredientes.extend(ingredientes)
     
     def crear_tecnica(self, tecnica):      
         self.tecnica = tecnica
@@ -97,24 +97,24 @@ class CSV_Builder():
     def crear_csv(self):
         with open('pizza.csv', 'w', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(["Masa", "Salsa", "Ingrediente", "Tecnica", "Presentacion", "Extra", "Bebida", "Postre"])
+            writer.writerow(["Masa", "Salsa", "Ingredientesingredientes", "Tecnica", "Presentacion", "Extra", "Bebida", "Postre"])
         file.close()
         
-    def añadir_pizza(self, masa, salsa, ingrediente, tecnica, presentacion, extra, bebida, postre):
+    def añadir_pizza(self, masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre):
         with open('pizza.csv', 'a', newline='') as file:
             writer = csv.writer(file)
-            print(masa, salsa, ingrediente, tecnica, presentacion, extra, bebida, postre)
-            writer.writerow([masa, salsa, ', '.join(ingrediente), tecnica, presentacion, extra, bebida, postre])
+            print(masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre)
+            writer.writerow([masa, salsa, ', '.join(ingredientes), tecnica, presentacion, extra, bebida, postre])
         file.close()
 
 class PizzaDirector:
     def __init__(self, builder):
         self._builder = builder
         
-    def crear_pizza(self, masa, salsa, ingrediente, tecnica, presentacion, extra, bebida, postre):
+    def crear_pizza(self, masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre):
         self._builder.crear_masa(masa)
         self._builder.crear_salsa(salsa)
-        self._builder.crear_ingrediente(ingrediente)
+        self._builder.crear_ingredientes(ingredientes)
         self._builder.crear_tecnica(tecnica)
         self._builder.crear_presentacion(presentacion)
         self._builder.crear_extra(extra)

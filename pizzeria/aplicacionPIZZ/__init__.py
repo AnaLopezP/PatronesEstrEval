@@ -28,7 +28,7 @@ def manejar_formulario():
     print(request.get_data())
     masa = request.form.get("masa")
     salsa = request.form.get("salsa")
-    ingrediente = request.form.get("ingrediente")
+    ingredientes = request.form.get("ingredientes")
     tecnica = request.form.get("tecnica")
     presentacion = request.form.get("presentacion")
     extra = request.form.get("extra")
@@ -38,19 +38,19 @@ def manejar_formulario():
     #paso los datos al director para que cree la pizza
     director._builder.crear_masa(masa)
     director._builder.crear_salsa(salsa)
-    director._builder.crear_ingrediente(ingrediente)
+    director._builder.crear_ingredientes(ingredientes)
     director._builder.crear_tecnica(tecnica)
     director._builder.crear_presentacion(presentacion)
     director._builder.crear_extra(extra)
     director._builder.crear_bebida(bebida)
     director._builder.crear_postre(postre)
     
-    director.crear_pizza(masa, salsa, ingrediente, tecnica, presentacion, extra, bebida, postre)
+    director.crear_pizza(masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre)
     
     csv_builder = l.CSV_Builder()
     if not os.path.isfile('pizza.csv'):
             csv_builder.crear_csv()
-    csv_builder.añadir_pizza(masa, salsa, ingrediente, tecnica, presentacion, extra, bebida, postre)
+    csv_builder.añadir_pizza(masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre)
     return "Pizza pedida con éxito."
     
 if __name__ == '__main__':
