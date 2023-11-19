@@ -3,16 +3,16 @@ body, h1, h2, ul, li, p, textarea, input {
     margin: 0;
     padding: 0;
 }
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background: url('/static/images/logo.jpg') center center no-repeat; /* Centra la imagen y evita la repetición */
+    background: url('/static/images/logo4.jpg') center center no-repeat; /* Centra la imagen y evita la repetición */
     background-size: auto 70%; /* Ajusta el tamaño vertical al 70%, puedes ajustar este valor según tus necesidades */
+    background-attachment: fixed; /* Fija la imagen para que no se mueva al hacer scroll */
+    background-color: rgb(0 146 70); /* Color de fondo verde */
     color: #333;
 }
-
-
-
 
 header, footer {
     max-width: 1200px; /* Ancho máximo del elemento */
