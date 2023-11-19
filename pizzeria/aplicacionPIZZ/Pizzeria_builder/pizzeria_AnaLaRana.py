@@ -104,7 +104,7 @@ class CSV_Builder():
         with open('pizza.csv', 'a', newline='') as file:
             writer = csv.writer(file)
             print(masa, salsa, ingrediente, tecnica, presentacion, extra, bebida, postre)
-            writer.writerow([masa, salsa, ingrediente, tecnica, presentacion, extra, bebida, postre])
+            writer.writerow([masa, salsa, ', '.join(ingrediente), tecnica, presentacion, extra, bebida, postre])
         file.close()
 
 class PizzaDirector:
