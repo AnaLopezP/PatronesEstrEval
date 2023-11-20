@@ -7,7 +7,7 @@ class ComboBuilder(ABC):
     
     @property
     @abstractmethod
-    def crear_combo(self):
+    def crear_combos(self):
         pass
     
     @abstractmethod
@@ -42,7 +42,6 @@ class Combo:
     @property
     def combo(self):
         combo = [self.pizza, self.bebida, self.postre]
-        self.reset()
         return combo
 
     def crear_pizza_menu(self, pizza):
@@ -60,24 +59,28 @@ class Combo:
     def crear_precio(self, precio):
         self.precio = precio
         
-class Producto():
-    def __init__(self):
-        self._combo = []
+class Producto(Combo):
+    def __init__(self, nombre):
+        super().__init__()
+        self.nombre = nombre
+        self._combos = []
         
-    def añadir_combo(self, combo):
-        self._combo.append(combo)
+    def añadir_combos(self, combo):
+        self._combos.append(combo)
     
     def __str__(self):
-        return f"Combo: {', '.join(self._combo)}"
+        combo_str = f"{self.nombre}: {', '.join(map(str, self.combo))}"
+        subcombos_str = "\n".join(map(str, self._combos))
+        return f"{combo_str}\n{subcombos_str}" if self._combos else combo_str
     
-class CSV_combo_Builder():
-    def crear_csv_combo(self):
+class CSV_combos_Builder(ComboBuilder):
+    def crear_csv_combos(self):
         with open('combo.csv', 'w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(["id", "pizza", "bebida", "postre", "precio"])
         file.close()
     
-    def añadir_combo(self, id, pizza, bebida, postre, precio):
+    def añadir_combos(self, id, pizza, bebida, postre, precio):
         with open('combo.csv', 'a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow([id, pizza, bebida, postre, precio])
@@ -87,7 +90,7 @@ class ComboDirector():
     def __init__(self, builder):
         self._builder = builder
         
-    def crear_combo(self, pizza, bebida, postre, id, precio):
+    def crear_combos(self, pizza, bebida, postre, id, precio):
         self._builder.crear_pizza_menu(pizza)
         self._builder.crear_bebida_menu(bebida)
         self._builder.crear_postre_menu(postre)
@@ -95,9 +98,9 @@ class ComboDirector():
         self._builder.crear_precio(precio)
         
     @property
-    def builder_combo(self):
+    def builder_combos(self):
         return self._builder
     
-    @builder_combo.setter
-    def builder_combo(self, builder):
+    @builder_combos.setter
+    def builder_combos(self, builder):
         self._builder = builder
