@@ -3,6 +3,11 @@ import csv
 import os.path
 from flask import request
 
+class MenuComponente(ABC):
+    @abstractmethod
+    def get_precio(self):
+        pass
+    
 class ComboBuilder(ABC):
     
     @property
@@ -34,46 +39,30 @@ class ComboBuilder(ABC):
     def crear_precio(self):
         pass
     
-class Combo:
-    def __init__(self):
-        self.reset()
+    @abstractmethod
+    def crear_menu(self):
+        pass
     
-    def reset(self):
-        self.pizza = ""
-        self.bebida = ""
-        self.postre = ""
-        
-    @property
-    def combo(self):
-        combo = [self.pizza, self.bebida, self.postre]
-        return combo
-
-    def crear_entrante_menu(self, entrante):
-        self.entrante = entrante
+class Combo(MenuComponente):
+    def __init__(self, codigo):
+        super().__init__()
+        self.codigo = codigo
+        self.elementos = []
     
-    def crear_pizza_menu(self, pizza):
-        self.pizza = pizza
+    def get_precio(self):
+        return sum(elemento.get_precio() for elemento in self.elementos)
+    
+    def añadir_elemento(self, elemento):
+        self.elementos.append(elemento)
         
-    def crear_bebida_menu(self, bebida):
-        self.bebida = bebida 
-        
-    def crear_postre_menu(self, postre):
-        self.postre = postre
-        
-    def crear_id(self, id):
-        self.id = id
-        
-    def crear_precio(self, precio):
-        self.precio = precio
-        
-class Producto(Combo):
-    def __init__(self, nombre):
+class Producto(MenuComponente):
+    def __init__(self, nombre, precio):
         super().__init__()
         self.nombre = nombre
-        self._combos = []
+        self.precio = precio
         
-    def añadir_combos(self, combo):
-        self._combos.append(combo)
+    def get_precio(self):
+        return self.precio
     
     def __str__(self):
         combo_str = f"{self.nombre}: {', '.join(map(str, self.combo))}"
@@ -104,6 +93,9 @@ class ComboDirector():
         self._builder.crear_postre_menu(postre)
         self._builder.crear_id(id)
         self._builder.crear_precio(precio)
+        
+    def crear_menu_compuesto(self, codigo):
+        self._builder.crear_menu(codigo)
         
     @property
     def builder_combos(self):
