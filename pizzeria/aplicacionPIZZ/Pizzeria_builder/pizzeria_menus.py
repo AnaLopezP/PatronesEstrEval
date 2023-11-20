@@ -60,8 +60,21 @@ class MenuComposite(Componente):
         return True
 
     def get_precio(self):
-        for hijo in self._hijos:
-            suma = sum(hijo.get_precio())
+        suma = 0.0
+        archivo_csv = 'precios.csv'
+        try:
+            with open(archivo_csv, 'r') as file:
+                reader = csv.reader(file)
+                next(reader)
+                precios = {row[0]: float(row[1]) for row in reader}
+                for hijo in self._hijos:
+                    if isinstance(hijo, MenuItem):
+                        suma += precios.get(hijo.id, 0.0)
+                    elif isinstance(hijo, MenuComposite):
+                        suma += hijo.get_precio()
+        except FileNotFoundError:
+            print(f"El archivo CSV '{archivo_csv}' no existe.")
+            return 0.0
         return suma
 
 #A partir de aqui es la creacion del menu con builder:

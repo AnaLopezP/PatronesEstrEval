@@ -171,6 +171,10 @@ def manejar_formulario_combos():
     bebida = request.form.get("bebida")
     postre = request.form.get("postre")
     
+    #recogo el precio de los productos
+    precio_entrante = obtener_precio(entrante)
+    
+    
     #paso los datos al director para que cree el combo
     director_combo._builder.crear_entrante_menu(entrante)
     director_combo._builder.crear_pizza_menu(pizza)
