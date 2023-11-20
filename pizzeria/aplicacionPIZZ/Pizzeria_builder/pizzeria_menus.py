@@ -11,6 +11,10 @@ class ComboBuilder(ABC):
         pass
     
     @abstractmethod
+    def crear_entrante_menu(self):
+        pass
+    
+    @abstractmethod
     def crear_pizza_menu(self):
         pass
     
@@ -44,6 +48,9 @@ class Combo:
         combo = [self.pizza, self.bebida, self.postre]
         return combo
 
+    def crear_entrante_menu(self, entrante):
+        self.entrante = entrante
+    
     def crear_pizza_menu(self, pizza):
         self.pizza = pizza
         
@@ -77,20 +84,21 @@ class CSV_combos_Builder():
     def crear_csv_combos(self):
         with open('combo.csv', 'w', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(["id", "pizza", "bebida", "postre", "precio"])
+            writer.writerow(["id","entrante", "pizza", "bebida", "postre", "precio"])
         file.close()
     
-    def añadir_combos(self, id, pizza, bebida, postre, precio):
+    def añadir_combos(self, id, entrante, pizza, bebida, postre, precio):
         with open('combo.csv', 'a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([id, pizza, bebida, postre, precio])
+            writer.writerow([id, entrante, pizza, bebida, postre, precio])
         file.close()
         
 class ComboDirector():
     def __init__(self, builder):
         self._builder = builder
         
-    def crear_combos(self, pizza, bebida, postre, id, precio):
+    def crear_combos(self, entrante, pizza, bebida, postre, id, precio):
+        self._builder.crear_entrante_menu(entrante)
         self._builder.crear_pizza_menu(pizza)
         self._builder.crear_bebida_menu(bebida)
         self._builder.crear_postre_menu(postre)
