@@ -93,11 +93,13 @@ def registro():
 def manejar_formulario_combos():
     #recojo los datos del formulario del html
     print(request.get_data())
+    entrante = request.form.get("entrante")
     pizza = request.form.get("pizza")
     bebida = request.form.get("bebida")
     postre = request.form.get("postre")
     
     #paso los datos al director para que cree la pizza
+    director_combo._builder.crear_entrante_menu(entrante)
     director_combo._builder.crear_pizza_menu(pizza)
     director_combo._builder.crear_bebida_menu(bebida)
     director_combo._builder.crear_postre_menu(postre)
@@ -106,12 +108,12 @@ def manejar_formulario_combos():
     precio = str(random.randint(10, 20)) + "€"
     director_combo._builder.crear_precio(precio)
     
-    director_combo.crear_combos(id, pizza, bebida, postre, precio)
+    director_combo.crear_combos(id, entrante, pizza, bebida, postre, precio)
     
     csv_builder_combo = m.CSV_combos_Builder()
     if not os.path.isfile('combo.csv'):
             csv_builder_combo.crear_csv_combos()
-    csv_builder_combo.añadir_combos(id, pizza, bebida, postre, precio)
+    csv_builder_combo.añadir_combos(id, entrante, pizza, bebida, postre, precio)
     return "Combo pedido con éxito."
     
 
