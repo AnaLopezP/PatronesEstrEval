@@ -64,7 +64,8 @@ class Producto(MenuComponente):
         combo_str = f"{self.nombre}: {', '.join(map(str, self.combo))}"
         subcombos_str = "\n".join(map(str, self._combos))
         return f"{combo_str}\n{subcombos_str}" if self._combos else combo_str
-    
+        
+
 class CSV_combos_Builder():
     def crear_csv_combos(self):
         with open('combo.csv', 'w', newline='') as file:
