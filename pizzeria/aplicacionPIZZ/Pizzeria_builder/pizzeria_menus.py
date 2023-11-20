@@ -1,15 +1,71 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
+from typing import List
 import csv
-import os.path
-from flask import request
 
-class MenuComponente(ABC):
+class Componente(ABC):
+
+    @property
+    def padre(self):
+        return self._padre
+
+    @padre.setter
+    def parent(self, padre):
+        self._padre = padre
+
+    def add(self, componente) -> None:
+        pass
+
+    def remove(self, componente) -> None:
+        pass
+
+    def esta_compuesto(self):
+        return False
+    
     @abstractmethod
     def get_precio(self):
         pass
     
-class ComboBuilder(ABC):
+    @abstractmethod
+    def get_id(self):
+        pass
+
+
+class MenuItem(Componente):
+    def __init__(self, id, precio):
+        self._id = id
+        self._precio = precio
+        
+    def get_precio(self):
+        return self._precio
     
+    def get_id(self):
+        return self._id
+
+
+class MenuComposite(Componente):
+    def __init__(self, nombre):
+        self._nombre = nombre
+        self._hijos = []
+
+    def add_hijo(self, hijo):
+        self._hijos.append(hijo)
+        hijo.parent = self
+
+    def remove(self, hijo):
+        self._hijos.remove(hijo)
+        hijo.parent = None
+
+    def is_composite(self):
+        return True
+
+    def get_precio(self):
+        for hijo in self._hijos:
+            suma = sum(hijo.get_precio())
+        return suma
+
+#A partir de aqui es la creacion del menu con builder:
+class MenuBuilder(ABC):
     @property
     @abstractmethod
     def crear_combos(self):
@@ -38,65 +94,75 @@ class ComboBuilder(ABC):
     @abstractmethod
     def crear_menu(self):
         pass
-    
-class Combo(MenuComponente):
-    def __init__(self, codigo):
-        super().__init__()
-        self.codigo = codigo
-        self.elementos = []
-    
-    def get_precio(self):
-        return sum(elemento.get_precio() for elemento in self.elementos)
-    
-    def añadir_elemento(self, elemento):
-        self.elementos.append(elemento)
-        
-class Producto(MenuComponente):
-    def __init__(self, nombre, precio):
-        super().__init__()
-        self.nombre = nombre
-        self.precio = precio
-        
-    def get_precio(self):
-        return self.precio
-    
-    def __str__(self):
-        combo_str = f"{self.nombre}: {', '.join(map(str, self.combo))}"
-        subcombos_str = "\n".join(map(str, self._combos))
-        return f"{combo_str}\n{subcombos_str}" if self._combos else combo_str
-        
 
-class CSV_combos_Builder():
-    def crear_csv_combos(self):
-        with open('combo.csv', 'w', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(["codigo","entrante", "pizza", "bebida", "postre", "precio"])
-        file.close()
-    
-    def añadir_combos(self, codigo, entrante, pizza, bebida, postre, precio):
-        with open('combo.csv', 'a', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow([codigo, entrante, pizza, bebida, postre, precio])
-        file.close()
+class Menu:
+    def __init__(self):
+        self.reset()
         
-class ComboDirector():
+    def reset(self):
+        self.entrante = ""
+        self.pizza = ""
+        self.bebida = ""
+        self.postre = ""
+        
+    @property
+    def menu(self):
+        menu = [self.entrante, self.pizza, self.bebida, self.postre]
+        self.reset()
+        return menu
+    
+    def crear_entrante_menu(self, entrante):
+        self.entrante = entrante
+    
+    def crear_pizza_menu(self, pizza):
+        self.pizza = pizza
+        
+    def crear_bebida_menu(self, bebida):
+        self.bebida = bebida
+        
+    def crear_postre_menu(self, postre):
+        self.postre = postre
+    
+class Menu_Producto():
+    def __init__(self):
+        self._menu = []
+    
+    def add(self, parte):
+        self._menu.append(parte)
+        
+    def __str__(self):
+        return f"Menu({', '.join([str(i) for i in self._menu])})"
+    
+
+class CSV_menu_Builder():
+    def crear_csv_menu(self):
+        with open('pizza.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(["Entrante", "Pizza", "Bebida", "Postre"])
+        file.close()
+
+    def añadir_menu(self, entrante, pizza, bebida, postre):
+        with open('pizza.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            print(entrante, pizza, bebida, postre)
+            writer.writerow([entrante, pizza, bebida, postre])
+        file.close()
+
+class MenuDirector:
     def __init__(self, builder):
         self._builder = builder
-        
-    def crear_combos(self, entrante, pizza, bebida, postre, precio):
+
+    def crear_menu(self, entrante, pizza, bebida, postre):
         self._builder.crear_entrante_menu(entrante)
         self._builder.crear_pizza_menu(pizza)
         self._builder.crear_bebida_menu(bebida)
         self._builder.crear_postre_menu(postre)
-        self._builder.crear_precio(precio)
-        
-    def crear_menu_compuesto(self, codigo):
-        self._builder.crear_menu(codigo)
-        
+    
     @property
-    def builder_combos(self):
+    def builder(self):
         return self._builder
     
-    @builder_combos.setter
-    def builder_combos(self, builder):
+    @builder.setter
+    def builder(self, builder):
         self._builder = builder
+        
