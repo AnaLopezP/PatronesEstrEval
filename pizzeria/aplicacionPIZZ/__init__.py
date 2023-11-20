@@ -9,17 +9,90 @@ import Pizzeria_builder.cliente as c
 import Pizzeria_builder.pizzeria_menus as m
 import random
 
+import csv
+
+precios = {
+    "pan de ajo": 3.0,
+    "palitos de queso": 2.50,
+    "bruschetta": 4.75,
+    "aros de cebolla": 3.0,
+    "patatas queso bacon": 4.0,
+    "deditos pollo": 2.50,
+    "provolone": 4.75,
+    "ensalada caprese": 5.0,
+    "ensalada mixta": 5.0,
+    "mix entrantes": 6.50,
+    "margarita": 6.0,
+    "cuatroquesos": 7.0,
+    "barbacoa": 7.0,
+    "carbonara": 7.0,
+    "pepperoni": 7.0,
+    "hawaiana": 7.0,
+    "4estaciones": 7.0,
+    "especialdelchef": 8.0,
+    "vegetariana": 7.0,
+    "suprema": 8.0,
+    "Sin bebida": 0.0,
+    "cocacola": 1.50,
+    "Agua": 1.0,
+    "fantanaranja": 1.50,
+    "fantalimon": 1.50,
+    "nestea": 1.50,
+    "sprite": 1.50,
+    "cerveza": 2.50,
+    "vino": 3.0,
+    "Sorprendame": 2.0,
+    "Sin postre": 0.0,
+    "Tarta de queso": 2.0,
+    "Tarta de chocolate": 2.0,
+    "Tarta de limon": 2.0,
+    "Tarta de manzana": 2.0,
+    "Helado": 1.50,
+    "Tarta de fresa": 2.0,
+    "Fruta": 1.50,
+    "Sorprendame": 2.50,
+}
+
+# Nombre del archivo CSV
+archivo_csv = 'precios.csv'
+
+# Escribir el diccionario en el archivo CSV
+with open(archivo_csv, 'w', newline='') as file:
+    writer = csv.writer(file)
+    # Escribir la cabecera
+    writer.writerow(['producto', 'precio'])
+    # Escribir los datos
+    for producto, precio in precios.items():
+        writer.writerow([producto, precio])
+
+print(f"El archivo CSV '{archivo_csv}' ha sido creado con éxito.")
+
+
 app = Flask(__name__)
 
+def generar_id():
+    return ''.join(str(random.randint(0, 9)) for _ in range(8))
+
+def obtener_precio(nombre_producto):
+    archivo_csv = 'precios.csv'
+
+    try:
+        with open(archivo_csv, 'r') as file:
+            reader = csv.reader(file)
+            next(reader)  # Saltar la primera fila que contiene los encabezados
+            precios = {row[0]: float(row[1]) for row in reader}
+    except FileNotFoundError:
+        print(f"Error: No se encontró el archivo CSV '{archivo_csv}'.")
+        return 0.0  # Otra opción es lanzar una excepción si el archivo no se encuentra
+
+    return precios.get(nombre_producto, 0.0)#que devuelva 0 si el preducto no está en el diccionario
 
 pizza_builder = l.Pizza()
 director = l.PizzaDirector(pizza_builder)
 
-combos_builder = m.Combo()
+combos_builder = m.ComboBuilder()
 director_combo = m.ComboDirector(combos_builder)
 
-def generar_id():
-    return ''.join(str(random.randint(0, 9)) for _ in range(8))
 
 @app.route('/home')
 def home():
@@ -92,28 +165,34 @@ def registro():
 @app.route('/form_combo', methods=['POST', 'GET'])
 def manejar_formulario_combos():
     #recojo los datos del formulario del html
+    tipo_menu = request.form.get("tipo_menu")
     print(request.get_data())
     entrante = request.form.get("entrante")
     pizza = request.form.get("pizza")
     bebida = request.form.get("bebida")
     postre = request.form.get("postre")
+    precio = m.Combo.get_precio()
     
-    #paso los datos al director para que cree la pizza
-    director_combo._builder.crear_entrante_menu(entrante)
-    director_combo._builder.crear_pizza_menu(pizza)
-    director_combo._builder.crear_bebida_menu(bebida)
-    director_combo._builder.crear_postre_menu(postre)
-    id = generar_id()
-    director_combo._builder.crear_id(id)
-    precio = str(random.randint(10, 20)) + "€"
-    director_combo._builder.crear_precio(precio)
+    #creo las instancias de los productos con sus precios
+    entrante_producto = m.Producto(entrante, obtener_precio(entrante))
+    pizza_producto = m.Producto(pizza, obtener_precio(pizza))
+    bebida_producto = m.Producto(bebida, obtener_precio(bebida))
+    postre_producto = m.Producto(postre, obtener_precio(postre))
     
-    director_combo.crear_combos(id, entrante, pizza, bebida, postre, precio)
+    #creo una instancia combo y añado los productos
+    combo = m.Combo(generar_id())
+    combo.añadir_elemento(entrante_producto)
+    combo.añadir_elemento(pizza_producto)
+    combo.añadir_elemento(bebida_producto)
+    combo.añadir_elemento(postre_producto)
+    
+    #calculo el precio total del combo
+    precio_combo = combo.get_precio()
     
     csv_builder_combo = m.CSV_combos_Builder()
     if not os.path.isfile('combo.csv'):
             csv_builder_combo.crear_csv_combos()
-    csv_builder_combo.añadir_combos(id, entrante, pizza, bebida, postre, precio)
+    csv_builder_combo.añadir_combos(entrante, pizza, bebida, postre, precio_combo)
     return "Combo pedido con éxito."
     
 
