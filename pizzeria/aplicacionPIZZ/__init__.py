@@ -90,8 +90,8 @@ def obtener_precio(nombre_producto):
 pizza_builder = l.Pizza()
 director = l.PizzaDirector(pizza_builder)
 
-combos_builder = m.ComboBuilder()
-director_combo = m.ComboDirector(combos_builder)
+combos_builder = m.Menu()
+director_combo = m.MenuDirector(combos_builder)
 
 
 @app.route('/home')
@@ -164,37 +164,26 @@ def registro():
 
 @app.route('/form_combo', methods=['POST', 'GET'])
 def manejar_formulario_combos():
-    #recojo los datos del formulario del html
-    tipo_menu = request.form.get("tipo_menu")
+    #recojo los datos del formulario
     print(request.get_data())
     entrante = request.form.get("entrante")
     pizza = request.form.get("pizza")
     bebida = request.form.get("bebida")
     postre = request.form.get("postre")
-    precio = m.Combo.get_precio()
     
-    #creo las instancias de los productos con sus precios
-    entrante_producto = m.Producto(entrante, obtener_precio(entrante))
-    pizza_producto = m.Producto(pizza, obtener_precio(pizza))
-    bebida_producto = m.Producto(bebida, obtener_precio(bebida))
-    postre_producto = m.Producto(postre, obtener_precio(postre))
+    #paso los datos al director para que cree el combo
+    director_combo._builder.crear_entrante_menu(entrante)
+    director_combo._builder.crear_pizza_menu(pizza)
+    director_combo._builder.crear_bebida_menu(bebida)
+    director_combo._builder.crear_postre_menu(postre)
     
-    #creo una instancia combo y añado los productos
-    combo = m.Combo(generar_id())
-    combo.añadir_elemento(entrante_producto)
-    combo.añadir_elemento(pizza_producto)
-    combo.añadir_elemento(bebida_producto)
-    combo.añadir_elemento(postre_producto)
+    director_combo.crear_menu(entrante, pizza, bebida, postre)
     
-    #calculo el precio total del combo
-    precio_combo = combo.get_precio()
-    
-    csv_builder_combo = m.CSV_combos_Builder()
-    if not os.path.isfile('combo.csv'):
-            csv_builder_combo.crear_csv_combos()
-    csv_builder_combo.añadir_combos(entrante, pizza, bebida, postre, precio_combo)
-    return "Combo pedido con éxito."
-    
+    csv_builder_menu = m.CSV_menu_Builder()
+    if not os.path.isfile('menu.csv'):
+            csv_builder_menu.crear_csv_menu()
+    csv_builder_menu.añadir_menu(entrante, pizza, bebida, postre)
+    return "Combo pedidio con éxito."
 
 if __name__ == '__main__':
     app.run(debug=True)

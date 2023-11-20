@@ -136,13 +136,13 @@ class Menu_Producto():
 
 class CSV_menu_Builder():
     def crear_csv_menu(self):
-        with open('pizza.csv', 'w', newline='') as file:
+        with open('menu.csv', 'w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(["Entrante", "Pizza", "Bebida", "Postre"])
         file.close()
 
     def añadir_menu(self, entrante, pizza, bebida, postre):
-        with open('pizza.csv', 'a', newline='') as file:
+        with open('menu.csv', 'a', newline='') as file:
             writer = csv.writer(file)
             print(entrante, pizza, bebida, postre)
             writer.writerow([entrante, pizza, bebida, postre])
