@@ -73,7 +73,7 @@ class Producto(Combo):
         subcombos_str = "\n".join(map(str, self._combos))
         return f"{combo_str}\n{subcombos_str}" if self._combos else combo_str
     
-class CSV_combos_Builder(ComboBuilder):
+class CSV_combos_Builder():
     def crear_csv_combos(self):
         with open('combo.csv', 'w', newline='') as file:
             writer = csv.writer(file)
