@@ -169,6 +169,7 @@ def iniciar_sesion():
             print("Inicio de sesión exitoso.") 
             return render_template('index_conuser.html')
         else:
+            print("Inicio de sesión fallido.")
             return render_template('index.html')
 
 @app.route('/form_combo', methods=['POST', 'GET'])
