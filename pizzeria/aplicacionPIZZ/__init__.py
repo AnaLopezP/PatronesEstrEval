@@ -200,13 +200,16 @@ def manejar_formulario_combosALA():
     #recogo el precio de los productos
     precio = 12.99    
     print(precio)
+    
     #paso los datos al director para que cree el combo
     director_combo._builder.crear_id(combo)
     director_combo.crear_menu(combo, combo, combo, combo, combo, precio)
     
     csv_builder_menu = m.CSV_menu_Builder()
+    
     if not os.path.isfile('menu.csv'):
             csv_builder_menu.crear_csv_menu()
+            
     csv_builder_menu.añadir_menu(combo, combo, combo, combo, combo, precio)
     return "Combo pedidio con éxito."
 
