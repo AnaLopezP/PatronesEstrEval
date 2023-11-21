@@ -151,7 +151,7 @@ input[type="submit"]:hover {
     background-color: #333;
 }
 
-#creatupizza, #creatucombo {
+#creatupizza, #creatucombo, #combosALA {
     background-color: rgb(206 43 55);
     color: #fff;
     padding: 12px 24px; /* Ajuste del tamaño del botón */
@@ -263,16 +263,25 @@ body {
 
 h1 {
     text-align: center;
+    margin-bottom: 20px; /* Añadimos un margen inferior al título */
 }
 
 .combo {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 20px;
+    transition: background-color 0.3s;
+    background-color: #fff; /* Color de fondo blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.combo:hover {
+    background-color: rgb(124, 205, 211);
 }
 
 .combo h2 {
-    color: #ff5733;
+    color: rgb(3, 39, 20);
 }
 
 .combo ul {
@@ -282,4 +291,24 @@ h1 {
 
 .combo li {
     margin-bottom: 5px;
+}
+.combo {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.combo.selected {
+    background-color: #e0f7fa;
+}
+
+#enviarBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }

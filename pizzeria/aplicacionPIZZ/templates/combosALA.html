@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="Pizzería Ana la Rana">
     <title>Pizzeria Ana la Rana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
     <style>
         
     </style>
@@ -20,6 +21,7 @@
             <li>Bebida: Refresco de cola</li>
             <li>Postre: Tiramisú</li>
         </ul>
+
     </div>
 
     <div class="combo">
@@ -30,13 +32,17 @@
             <li>Bebida: Ponche de Frutas</li>
             <li>Postre: Tronco de Navidad</li>
         </ul>
+
     </div>
 
     <div class="combo">
         <h2>Combo Solo-Pizza</h2>
         <ul>
             <li>Pizza: Pizza Margarita</li>
+            <li>Pizza: Pizza de Jamón y Queso</li>
+            <li>Pizza: Pizza de Pepperoni</li>
         </ul>
+
     </div>
 
     <div class="combo">
@@ -47,6 +53,7 @@
             <li>Entrante: Aros de Cebolla</li>
             <li>Bebida: Agua</li>
         </ul>
+
     </div>
 
     <div class="combo">
@@ -56,6 +63,7 @@
             <li>Postre: Brownie con Helado</li>
             <li>Bebida: Batido de Chocolate</li>
         </ul>
+
     </div>
 
     <div class="combo">
@@ -66,7 +74,8 @@
             <li>Bebida: Cerveza Mexicana</li>
             <li>Postre: Sorbete de Limón</li>
         </ul>
-    </div>
 
+    </div>
+    <button id="enviarBtn" onclick="enviarPedido()">Enviar Pedido</button>
 </body>
 </html>

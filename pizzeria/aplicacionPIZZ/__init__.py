@@ -106,6 +106,10 @@ def pizzacreativa():
 def pizzamenu():
     return render_template('pizzamenu.html')
 
+@app.route('/combosALA', methods=['POST', 'GET'])
+def combosALA():
+    return render_template('combosALA.html')
+
 @app.route('/form', methods=['POST'])
 def manejar_formulario():
     #recojo los datos del formulario del html
