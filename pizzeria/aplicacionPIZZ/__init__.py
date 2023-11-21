@@ -181,7 +181,7 @@ def manejar_formulario_combos():
     
     #recogo el precio de los productos
     precio = menu.get_precio()    
-    
+    print(precio)
     #paso los datos al director para que cree el combo
     director_combo._builder.crear_id(id)
     director_combo._builder.crear_entrante_menu(entrante)
