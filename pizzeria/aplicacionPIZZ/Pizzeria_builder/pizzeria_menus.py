@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from typing import List
 import csv
 
+
 class Componente(ABC):
 
     @property
@@ -26,9 +27,9 @@ class Componente(ABC):
     def get_precio(self):
         pass
     
-    @abstractmethod
+    '''@abstractmethod
     def get_id(self):
-        pass
+        pass'''
 
 
 class MenuItem(Componente):
@@ -76,12 +77,19 @@ class MenuComposite(Componente):
             print(f"El archivo CSV '{archivo_csv}' no existe.")
             return 0.0
         return suma
+    
+    '''def get_id(self):
+        return self._id'''
 
 #A partir de aqui es la creacion del menu con builder:
 class MenuBuilder(ABC):
     @property
     @abstractmethod
     def crear_combos(self):
+        pass
+    
+    @abstractmethod
+    def crear_id(self):
         pass
     
     @abstractmethod
@@ -124,6 +132,9 @@ class Menu:
         self.reset()
         return menu
     
+    def crear_id(self, id):
+        self.id = id
+    
     def crear_entrante_menu(self, entrante):
         self.entrante = entrante
     
@@ -151,25 +162,27 @@ class CSV_menu_Builder():
     def crear_csv_menu(self):
         with open('menu.csv', 'w', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(["Entrante", "Pizza", "Bebida", "Postre"])
+            writer.writerow(["ID", "Entrante", "Pizza", "Bebida", "Postre", "Precio"])
         file.close()
 
-    def añadir_menu(self, entrante, pizza, bebida, postre):
+    def añadir_menu(self, id, entrante, pizza, bebida, postre, precio):
         with open('menu.csv', 'a', newline='') as file:
             writer = csv.writer(file)
             print(entrante, pizza, bebida, postre)
-            writer.writerow([entrante, pizza, bebida, postre])
+            writer.writerow([id, entrante, pizza, bebida, postre, precio])
         file.close()
 
 class MenuDirector:
     def __init__(self, builder):
         self._builder = builder
 
-    def crear_menu(self, entrante, pizza, bebida, postre):
+    def crear_menu(self, id, entrante, pizza, bebida, postre, precio):
+        self._builder.crear_id(id)
         self._builder.crear_entrante_menu(entrante)
         self._builder.crear_pizza_menu(pizza)
         self._builder.crear_bebida_menu(bebida)
         self._builder.crear_postre_menu(postre)
+        self._builder.crear_precio(precio)
     
     @property
     def builder(self):
