@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Pizzería Ana la Rana">
+    <title>Pizzería Ana la Rana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+</head>
+
+<body>
+    <header>
+        <h1 id = "Pizzeria Ana la Rana">Pizzería Ana la Rana</h1>
+    </header>
+    <main>
+        <section id = "Menu">
+            <h2 id = "titMenu">Menú</h2>
+            <ul>
+                <li id = "Personalizado"><a href="{{ url_for('pizzamenu') }}">Menús personalizados</a></li>
+                <li id = "Combos Ana la Rana"><a href="{{ url_for('combosALA') }}">Combos Ana la Rana</a></li>
+                <li id = "Crea tu pizza"><a href="{{ url_for('pizzacreativa') }}">Crea tu Pizza</a></li>
+            </ul>
+        </section>
+
+        <div id="login-box">
+            <p>Bienvenid@, ¿que desea comer hoy?</p>
+        </div>
+    </main>
+    <footer>
+        <p>¿Tiene alguna pregunta? Llame al siguiente número: 666 666 666</p>
+    </footer>
+</body>

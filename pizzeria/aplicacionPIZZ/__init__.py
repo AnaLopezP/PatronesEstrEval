@@ -166,9 +166,10 @@ def iniciar_sesion():
 
         usuario = c.Usuario(nombre, "", contrasena, "", "")
         if usuario.iniciar_sesion():
-            return "Inicio de sesión exitoso."
+            print("Inicio de sesión exitoso.") 
+            return render_template('index_conuser.html')
         else:
-            return "Inicio de sesión fallido."
+            return render_template('index.html')
 
 @app.route('/form_combo', methods=['POST', 'GET'])
 def manejar_formulario_combos():
