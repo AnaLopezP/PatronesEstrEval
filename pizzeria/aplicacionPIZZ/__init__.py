@@ -188,5 +188,11 @@ def manejar_formulario_combos():
     csv_builder_menu.añadir_menu(id, entrante, pizza, bebida, postre, precio)
     return "Combo pedidio con éxito."
 
+@app.route('/form_comboALA', methods=['POST', 'GET'])
+def manejar_formulario_combosALA():
+    combo_seleccionado = request.form.get("combo")
+    print(combo_seleccionado)
+    return "Combo pedidio con éxito."
+
 if __name__ == '__main__':
     app.run(debug=True)
