@@ -254,3 +254,32 @@ input[type="submit"]:hover {
     margin-top: 10px;
     text-align: center;
 }
+
+/* Estilos específicos para los combos Ana la Rana*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.combo {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.combo h2 {
+    color: #ff5733;
+}
+
+.combo ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.combo li {
+    margin-bottom: 5px;
+}
