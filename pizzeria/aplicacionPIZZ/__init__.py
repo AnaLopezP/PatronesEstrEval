@@ -73,20 +73,7 @@ app = Flask(__name__)
 def generar_id():
     return ''.join(str(random.randint(0, 9)) for _ in range(8))
 
-'''def obtener_precio(nombre_producto):
-    archivo_csv = 'precios.csv'
 
-    try:
-        with open(archivo_csv, 'r') as file:
-            reader = csv.reader(file)
-            next(reader)  # Saltar la primera fila que contiene los encabezados
-            precios = {row[0]: float(row[1]) for row in reader}
-    except FileNotFoundError:
-        print(f"Error: No se encontró el archivo CSV '{archivo_csv}'.")
-        return 0.0  # Otra opción es lanzar una excepción si el archivo no se encuentra
-
-    return precios.get(nombre_producto, 0.0)#que devuelva 0 si el preducto no está en el diccionario
-'''
 pizza_builder = l.Pizza()
 director = l.PizzaDirector(pizza_builder)
 
