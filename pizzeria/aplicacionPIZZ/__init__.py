@@ -155,6 +155,18 @@ def registro():
 
     return "Usuario registrado con éxito."
 
+@app.route('/home', methods=['POST', 'GET'])
+def iniciar_sesion():
+    if request.method == 'POST':
+        usuario = request.form.get("usuario")
+        contraseña = request.form.get("contraseña")
+
+        usuario = c.Usuario("", "", usuario, contraseña, "", "")
+        if usuario.iniciar_sesion():
+            return "Inicio de sesión exitoso."
+        else:
+            return "Inicio de sesión fallido."
+
 @app.route('/form_combo', methods=['POST', 'GET'])
 def manejar_formulario_combos():
     #recojo los datos del formulario
