@@ -198,7 +198,7 @@ def manejar_formulario_combosALA():
 
     
     #recogo el precio de los productos
-    precio = menu.get_precio()    
+    precio = 12.99    
     print(precio)
     #paso los datos al director para que cree el combo
     director_combo._builder.crear_id(combo)
