@@ -190,34 +190,24 @@ def manejar_formulario_combos():
 
 @app.route('/form_comboALA', methods=['POST', 'GET'])
 def manejar_formulario_combosALA():
-    id = request.form.get("id")
-    entrante = request.form.get("entrante")
-    pizza = request.form.get("pizza")
-    bebida = request.form.get("bebida")
-    postre = request.form.get("postre")
+    combo = request.form.get("combo")
+
     
     menu = m.MenuComposite()
-    menu.add_hijo(m.MenuItem(entrante))
-    menu.add_hijo(m.MenuItem(pizza))
-    menu.add_hijo(m.MenuItem(bebida))
-    menu.add_hijo(m.MenuItem(postre))
+    menu.add_hijo(m.MenuItem(combo))
+
     
     #recogo el precio de los productos
     precio = menu.get_precio()    
     print(precio)
     #paso los datos al director para que cree el combo
-    director_combo._builder.crear_id(id)
-    director_combo._builder.crear_entrante_menu(entrante)
-    director_combo._builder.crear_pizza_menu(pizza)
-    director_combo._builder.crear_bebida_menu(bebida)
-    director_combo._builder.crear_postre_menu(postre)
-    director_combo._builder.crear_precio(precio)
-    director_combo.crear_menu(id, entrante, pizza, bebida, postre, precio)
+    director_combo._builder.crear_id(combo)
+    director_combo.crear_menu(combo, combo, combo, combo, combo, precio)
     
     csv_builder_menu = m.CSV_menu_Builder()
     if not os.path.isfile('menu.csv'):
             csv_builder_menu.crear_csv_menu()
-    csv_builder_menu.añadir_menu(id, entrante, pizza, bebida, postre, precio)
+    csv_builder_menu.añadir_menu(combo, combo, combo, combo, combo, precio)
     return "Combo pedidio con éxito."
 
 
