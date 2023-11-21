@@ -140,7 +140,7 @@ def manejar_formulario():
     if not os.path.isfile('pizza.csv'):
             csv_builder.crear_csv()
     csv_builder.añadir_pizza(masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre)
-    return "Pizza pedida con éxito."
+    return "Pizza pedida con éxito. Su total es 12.99€"
     
 @app.route('/registro', methods=['POST', 'GET'])
 def registro():
@@ -154,9 +154,7 @@ def registro():
 
         persona = c.Usuario(nombre, direccion, contrasena, telefono, email)
         persona.registrar_usuario()
-        
-
-    return "Usuario registrado con éxito."
+    return render_template('index_conuser.html')
 
 @app.route('/iniciar_sesion', methods=['POST', 'GET'])
 def iniciar_sesion():
@@ -205,7 +203,7 @@ def manejar_formulario_combos():
     if not os.path.isfile('menu.csv'):
             csv_builder_menu.crear_csv_menu()
     csv_builder_menu.añadir_menu(id, entrante, pizza, bebida, postre, precio)
-    return "Combo pedidio con éxito."
+    return "Combo pedidio con éxito. Su total es de " + str(precio) + "€."
 
 @app.route('/form_comboALA', methods=['POST', 'GET'])
 def manejar_formulario_combosALA():
@@ -217,7 +215,7 @@ def manejar_formulario_combosALA():
     # Guardar en CSV
     guardar_en_csv(combo_id, combo_nombre)
 
-    return "Combo pedidio con éxito."
+    return "Combo pedidio con éxito. Su total es 12.99€"
 
 def guardar_en_csv(combo_id, combo_nombre):
     file_exists = os.path.isfile('combos.csv')
