@@ -1,10 +1,10 @@
 import csv
 import os
 class Usuario():
-    def __init__(self, nombre, direccion, contraseña, telefono, email):
+    def __init__(self, nombre, direccion, contrasena, telefono, email):
         self.nombre = nombre
         self.direccion = direccion
-        self.contraseña = contraseña
+        self.contrasena = contrasena
         self.telefono = telefono
         self.email = email
         self.ordenes = []
@@ -17,7 +17,7 @@ class Usuario():
         file_exists = os.path.isfile(archivo_csv)
 
         with open(archivo_csv, mode='a', newline='') as file:
-            fieldnames = ['nombre', 'direccion', 'contraseña', 'telefono', 'email']
+            fieldnames = ['nombre', 'direccion', 'contrasena', 'telefono', 'email']
             writer = csv.DictWriter(file, fieldnames=fieldnames)
 
             if not file_exists:
@@ -27,7 +27,7 @@ class Usuario():
             writer.writerow({
                 'nombre': self.nombre,
                 'direccion': self.direccion,
-                'contraseña': self.contraseña,
+                'contrasena': self.contrasena,
                 'telefono': self.telefono,
                 'email': self.email
             })
@@ -41,7 +41,7 @@ class Usuario():
 
             # Verificar las credenciales del usuario
             for row in reader:
-                if row['nombre'] == self.nombre and row['contraseña'] == self.contraseña:
+                if row['nombre'] == self.nombre and row['contrasena'] == self.contrasena:
                     return True
 
         return False

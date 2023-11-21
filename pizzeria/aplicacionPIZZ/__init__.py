@@ -148,23 +148,23 @@ def registro():
         nombre = request.form.get("nombre")
         direccion = request.form.get("direccion")
 
-        contraseña = request.form.get("contraseña")
+        contrasena = request.form.get("contrasena")
         email = request.form.get("email")
         telefono = request.form.get("telefono")
 
-        persona = c.Usuario(nombre, direccion, contraseña, telefono, email)
+        persona = c.Usuario(nombre, direccion, contrasena, telefono, email)
         persona.registrar_usuario()
         
 
     return "Usuario registrado con éxito."
 
-@app.route('/home', methods=['POST', 'GET'])
+@app.route('/iniciar_sesion', methods=['POST', 'GET'])
 def iniciar_sesion():
     if request.method == 'POST':
-        nombre = request.form.get("nombre")
-        contraseña = request.form.get("contraseña")
+        nombre = request.form.get("username")
+        contrasena = request.form.get("password")
 
-        usuario = c.Usuario("", "", usuario, contraseña, "", "")
+        usuario = c.Usuario(nombre, "", contrasena, "", "")
         if usuario.iniciar_sesion():
             return "Inicio de sesión exitoso."
         else:
