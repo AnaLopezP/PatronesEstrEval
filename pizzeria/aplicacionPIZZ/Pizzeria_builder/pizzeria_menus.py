@@ -40,13 +40,13 @@ class MenuItem(Componente):
     def get_precio(self):
         return self._precio
     
-    def get_id(self):
-        return self._id
+    '''def get_id(self):
+        return self._id'''
 
 
 class MenuComposite(Componente):
-    def __init__(self, id):
-        self._id = id
+    def __init__(self):
+        #self._id = id
         self._hijos = []
 
     def add_hijo(self, hijo):
@@ -70,7 +70,7 @@ class MenuComposite(Componente):
                 precios = {row[0]: float(row[1]) for row in reader}
                 for hijo in self._hijos:
                     if isinstance(hijo, MenuItem):
-                        suma += precios.get(hijo.id, 0.0)
+                        suma += precios.get(hijo._precio, 0.0)
                     elif isinstance(hijo, MenuComposite):
                         suma += hijo.get_precio()
         except FileNotFoundError:

@@ -189,12 +189,12 @@ def manejar_formulario_combos():
     director_combo._builder.crear_bebida_menu(bebida)
     director_combo._builder.crear_postre_menu(postre)
     director_combo._builder.crear_precio(precio)
-    director_combo.crear_menu(entrante, pizza, bebida, postre)
+    director_combo.crear_menu(id, entrante, pizza, bebida, postre, precio)
     
     csv_builder_menu = m.CSV_menu_Builder()
     if not os.path.isfile('menu.csv'):
             csv_builder_menu.crear_csv_menu()
-    csv_builder_menu.añadir_menu(entrante, pizza, bebida, postre)
+    csv_builder_menu.añadir_menu(id, entrante, pizza, bebida, postre, precio)
     return "Combo pedidio con éxito."
 
 if __name__ == '__main__':
