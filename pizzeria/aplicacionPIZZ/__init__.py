@@ -190,7 +190,7 @@ def manejar_formulario_combos():
 
 @app.route('/form_comboALA', methods=['POST', 'GET'])
 def manejar_formulario_combosALA():
-    id = request.form.get("combo")
+    id = request.form.get("id")
     entrante = request.form.get("entrante")
     pizza = request.form.get("pizza")
     bebida = request.form.get("bebida")
