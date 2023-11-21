@@ -44,8 +44,8 @@ class MenuItem(Componente):
 
 
 class MenuComposite(Componente):
-    def __init__(self, nombre):
-        self._nombre = nombre
+    def __init__(self, id):
+        self._id = id
         self._hijos = []
 
     def add_hijo(self, hijo):

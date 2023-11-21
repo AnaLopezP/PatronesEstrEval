@@ -73,7 +73,7 @@ app = Flask(__name__)
 def generar_id():
     return ''.join(str(random.randint(0, 9)) for _ in range(8))
 
-def obtener_precio(nombre_producto):
+'''def obtener_precio(nombre_producto):
     archivo_csv = 'precios.csv'
 
     try:
@@ -86,7 +86,7 @@ def obtener_precio(nombre_producto):
         return 0.0  # Otra opción es lanzar una excepción si el archivo no se encuentra
 
     return precios.get(nombre_producto, 0.0)#que devuelva 0 si el preducto no está en el diccionario
-
+'''
 pizza_builder = l.Pizza()
 director = l.PizzaDirector(pizza_builder)
 
@@ -166,16 +166,17 @@ def registro():
 def manejar_formulario_combos():
     #recojo los datos del formulario
     print(request.get_data())
+    id = generar_id()
     entrante = request.form.get("entrante")
     pizza = request.form.get("pizza")
     bebida = request.form.get("bebida")
     postre = request.form.get("postre")
     
     #recogo el precio de los productos
-    precio_entrante = obtener_precio(entrante)
-    
+    precio = m.MenuComposite.get_precio()    
     
     #paso los datos al director para que cree el combo
+    director_combo._builder.crear_id(id)
     director_combo._builder.crear_entrante_menu(entrante)
     director_combo._builder.crear_pizza_menu(pizza)
     director_combo._builder.crear_bebida_menu(bebida)
