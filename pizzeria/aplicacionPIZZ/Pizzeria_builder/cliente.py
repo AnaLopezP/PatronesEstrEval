@@ -10,7 +10,7 @@ class Usuario():
         self.email = email
         self.ordenes = []
 
-    def registrar_usuario(usuario):
+    def registrar_usuario(self):
         # Nombre del archivo CSV
         archivo_csv = 'usuarios.csv'
 
@@ -26,15 +26,15 @@ class Usuario():
 
             # Escribir datos del usuario en el archivo CSV
             writer.writerow({
-                'nombre': usuario.nombre,
-                'direccion': usuario.direccion,
-                'usuario': usuario.usuario,
-                'contraseña': usuario.contraseña,
-                'telefono': usuario.telefono,
-                'email': usuario.email
+                'nombre': self.nombre,
+                'direccion': self.direccion,
+                'usuario': self.usuario,
+                'contraseña': self.contraseña,
+                'telefono': self.telefono,
+                'email': self.email
             })
 
-    def iniciar_sesion(nombre_usuario, contraseña):
+    def iniciar_sesion(self):
         # Nombre del archivo CSV
         archivo_csv = 'usuarios.csv'
 
@@ -43,7 +43,7 @@ class Usuario():
 
             # Verificar las credenciales del usuario
             for row in reader:
-                if row['usuario'] == nombre_usuario and row['contraseña'] == contraseña:
+                if row['usuario'] == self.usuario and row['contraseña'] == self.contraseña:
                     return True
 
         return False

@@ -150,6 +150,8 @@ def registro():
         telefono = request.form.get("telefono")
 
         usuario = c.Usuario(nombre, direccion, usuario, contraseña, telefono, email)
+        usuario.registrar_usuario()
+        
 
     return render_template('registro.html')
 
