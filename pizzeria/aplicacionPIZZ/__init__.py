@@ -149,8 +149,8 @@ def registro():
         email = request.form.get("email")
         telefono = request.form.get("telefono")
 
-        usuario = c.Usuario(nombre, direccion, usuario, contraseña, telefono, email)
-        usuario.registrar_usuario()
+        persona = c.Usuario(nombre, direccion, usuario, contraseña, telefono, email)
+        persona.registrar_usuario()
         
 
     return "Usuario registrado con éxito."
