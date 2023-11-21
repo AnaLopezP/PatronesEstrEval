@@ -191,6 +191,7 @@ def manejar_formulario_combos():
 @app.route('/form_comboALA', methods=['POST', 'GET'])
 def manejar_formulario_combosALA():
     combo = request.form.get("combo")
+    print(combo)
 
     
     menu = m.MenuComposite()
