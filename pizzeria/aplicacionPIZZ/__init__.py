@@ -153,7 +153,7 @@ def registro():
         usuario.registrar_usuario()
         
 
-    return render_template('registro.html')
+    return "Usuario registrado con éxito."
 
 @app.route('/form_combo', methods=['POST', 'GET'])
 def manejar_formulario_combos():
