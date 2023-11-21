@@ -181,7 +181,7 @@ def manejar_formulario_combos():
     director_combo._builder.crear_pizza_menu(pizza)
     director_combo._builder.crear_bebida_menu(bebida)
     director_combo._builder.crear_postre_menu(postre)
-    
+    director_combo._builder.crear_precio(precio)
     director_combo.crear_menu(entrante, pizza, bebida, postre)
     
     csv_builder_menu = m.CSV_menu_Builder()

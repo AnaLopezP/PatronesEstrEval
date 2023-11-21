@@ -146,6 +146,9 @@ class Menu:
         
     def crear_postre_menu(self, postre):
         self.postre = postre
+        
+    def crear_precio(self, precio):
+        self.precio = precio
     
 class Menu_Producto():
     def __init__(self):
