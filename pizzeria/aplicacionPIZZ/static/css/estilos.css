@@ -301,9 +301,6 @@ h1 {
     cursor: pointer;
 }
 
-.combo.selected {
-    background-color: #e0f7fa;
-}
 
 #enviarBtn {
     display: block;
@@ -330,7 +327,7 @@ h1 {
 }
 
 .combo input:checked + label {
-    background-color: rgb(124, 205, 211);
+    background-color: rgb(124, 205, 211)
 }
 
 #enviarBtn {
