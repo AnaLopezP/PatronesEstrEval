@@ -80,6 +80,9 @@ director = l.PizzaDirector(pizza_builder)
 combos_builder = m.Menu()
 director_combo = m.MenuDirector(combos_builder)
 
+@app.route('/registrar_usuario')
+def registrar_usuario():
+    return render_template('registro.html')
 
 @app.route('/home')
 def home():
