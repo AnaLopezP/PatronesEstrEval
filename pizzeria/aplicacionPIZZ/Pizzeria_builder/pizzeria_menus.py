@@ -33,8 +33,8 @@ class Componente(ABC):
 
 
 class MenuItem(Componente):
-    def __init__(self, id, precio):
-        self._id = id
+    def __init__(self, precio):
+        #self._id = id
         self._precio = precio
         
     def get_precio(self):
