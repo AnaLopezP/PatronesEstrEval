@@ -190,25 +190,28 @@ def manejar_formulario_combos():
 
 @app.route('/form_comboALA', methods=['POST', 'GET'])
 def manejar_formulario_combosALA():
-    combo_id = request.form.get("combo_id")
-    print("id del combo:", combo_id)
+    combo_id = generar_id()
+    combo_nombre = request.form.get("combo_nombre")
+    print("ID del combo generado:", combo_id)
+    print("Nombre del combo:", combo_nombre)
 
-    
-    menu = m.MenuComposite()
-    menu.add_hijo(m.MenuItem(combo_id))
+    # Guardar en CSV
+    guardar_en_csv(combo_id, combo_nombre)
 
-    
-    #recogo el precio de los productos
-    precio = 12.99    
-    print(precio)
-    
-    #paso los datos al director para que cree el combo
-    director_combo._builder.crear_id(combo_id)
-    director_combo.crear_menu(combo_id, combo_id, combo_id, combo_id, combo_id, precio)
-    
-    csv_builder_menu = m.CSV_menu_Builder()
-    csv_builder_menu.añadir_menu(combo_id, combo_id, combo_id, combo_id, combo_id, precio)
     return "Combo pedidio con éxito."
+
+def guardar_en_csv(combo_id, combo_nombre):
+    file_exists = os.path.isfile('combos.csv')
+    
+    with open('combos.csv', mode='a', newline='') as file:
+        fieldnames = ['id', 'combo']
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+        if not file_exists:
+            writer.writeheader()  # Escribir encabezados solo si el archivo no existe
+
+        # Escribir datos del combo en el archivo CSV
+        writer.writerow({'id': combo_id, 'combo': combo_nombre})
 
 if __name__ == '__main__':
     app.run(debug=True)
