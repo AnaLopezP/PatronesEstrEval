@@ -191,7 +191,9 @@ def manejar_formulario_combos():
 @app.route('/form_comboALA', methods=['POST', 'GET'])
 def manejar_formulario_combosALA():
     combo = request.form.get("combo")
-    print(combo)
+    combo_id = request.form.get("combo_id")
+    print("combo seleccionado:", combo)
+    print("id del combo:", combo_id)
 
     
     menu = m.MenuComposite()
@@ -203,16 +205,11 @@ def manejar_formulario_combosALA():
     print(precio)
     
     #paso los datos al director para que cree el combo
-    director_combo._builder.crear_id(combo)
-    director_combo.crear_menu(combo, combo, combo, combo, combo, precio)
+    director_combo._builder.crear_id(combo_id)
+    director_combo.crear_menu(combo_id, combo, combo, combo, combo, precio)
     
     csv_builder_menu = m.CSV_menu_Builder()
-    
-    '''if not os.path.isfile('menu.csv'):
-            csv_builder_menu.crear_csv_menu()
-            '''
-    csv_builder_menu.añadir_menu(combo, combo, combo, combo, combo, precio)
-    return "Combo pedidio con éxito."
+    csv_builder_menu.añadir_menu(combo_id, combo, combo, combo, combo, precio)
 
 
 if __name__ == '__main__':
