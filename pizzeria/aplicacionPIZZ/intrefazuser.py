@@ -2,7 +2,7 @@
 Aquí inicializo instancias de clases, configuro bases de datos, etc.'''
 import sys
 sys.path.append('C:/Users/Usuario/Documents/GITHUB2/PatronesEstrEval/pizzeria')
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, flash
 import os
 import Pizzeria_builder.pizzeria_AnaLaRana as l
 import Pizzeria_builder.cliente as c
@@ -140,7 +140,10 @@ def manejar_formulario():
     if not os.path.isfile('pizza.csv'):
             csv_builder.crear_csv()
     csv_builder.añadir_pizza(masa, salsa, ingredientes, tecnica, presentacion, extra, bebida, postre)
-    return "Pizza pedida con éxito. Su total es 12.99€"
+    
+    mensaje = "Pedido realizado con éxito. Su total es de 12.99€"
+    flash(mensaje, "success")
+    return render_template("pedidorealizado.html", mensaje = mensaje)
     
 @app.route('/registro', methods=['POST', 'GET'])
 def registro():
@@ -203,7 +206,10 @@ def manejar_formulario_combos():
     if not os.path.isfile('menu.csv'):
             csv_builder_menu.crear_csv_menu()
     csv_builder_menu.añadir_menu(id, entrante, pizza, bebida, postre, precio)
-    return "Combo pedidio con éxito. Su total es de " + str(precio) + "€."
+    
+    mensaje = "Pedido realizado con éxito. Su total es de " + str(precio) + "€"
+    flash(mensaje, "success")
+    return render_template("pedidorealizado.html", mensaje = mensaje)
 
 @app.route('/form_comboALA', methods=['POST', 'GET'])
 def manejar_formulario_combosALA():
@@ -215,7 +221,9 @@ def manejar_formulario_combosALA():
     # Guardar en CSV
     guardar_en_csv(combo_id, combo_nombre)
 
-    return "Combo pedidio con éxito. Su total es 12.99€"
+    mensaje = "Pedido realizado con éxito. Su total es de 12.99€"
+    flash(mensaje, "success")
+    return render_template("pedidorealizado.html", mensaje = mensaje)
 
 def guardar_en_csv(combo_id, combo_nombre):
     file_exists = os.path.isfile('combos.csv')

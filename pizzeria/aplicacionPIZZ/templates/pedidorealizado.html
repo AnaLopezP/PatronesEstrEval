@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Pizzería Ana la Rana">
+    <title>Pizzería Ana la Rana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+</head>
+
+<body>
+    <header>
+        <h1 id = "graciasporsupedido">¡Gracias por su pedido!</h1>
+    </header>
+    <main>
+        {% if mensaje%}
+        <h2>{{mensaje}}</h2>
+        {% endif %}
+    </main>
+    <footer>
+        <p>¿Tiene alguna pregunta? Llame al siguiente número: 666 666 666</p>
+    </footer>
+</body>
