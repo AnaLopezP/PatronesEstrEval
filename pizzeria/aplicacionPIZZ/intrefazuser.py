@@ -3,6 +3,7 @@ Aquí inicializo instancias de clases, configuro bases de datos, etc.'''
 import sys
 sys.path.append('C:/Users/Usuario/Documents/GITHUB2/PatronesEstrEval/pizzeria')
 from flask import Flask, request, render_template, flash
+import secrets
 import os
 import Pizzeria_builder.pizzeria_AnaLaRana as l
 import Pizzeria_builder.cliente as c
@@ -69,6 +70,7 @@ print(f"El archivo CSV '{archivo_csv}' ha sido creado con éxito.")
 
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)
 
 def generar_id():
     return ''.join(str(random.randint(0, 9)) for _ in range(8))
