@@ -73,8 +73,23 @@ class Carpeta(Elemento):
         for elemento in self.elementos:
             elemento.aceptar(usuario, accion, proxy)
 
-#clase proxy para controlar el acceso a los elementos
-class ProxyAcceso:
+#clase interfaz del proxy
+class InterfazServicio:
+    #no tiene constructor, ya que es una interfgaz
+    def permitir_acceso(self, usuario, elemento, accion):
+        pass
+    
+    def get_registros_acceso(self, elemento):
+        pass
+    
+    def agregar_usuario_autorizado(self, usuario):
+        pass
+    
+    def registrar_acceso(self, elemento, accion):
+        pass
+    
+ #clase proxy para controlar el acceso a los elementos   
+class Proxy(InterfazServicio):
     #tenemos una lista con los usuarios autorizados a entrar, y un diccionario con los registros de acceso, que guarda el usuario y la fecha
     def __init__(self):
         self.usuario_autorizado = []
