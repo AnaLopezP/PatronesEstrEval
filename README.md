@@ -42,4 +42,8 @@ Otupt:
 ## UML
 ![image](https://github.com/AnaLopezP/PatronesEstrEval/assets/34817139/48831ed4-025a-4dfb-8da7-2d584d8250e4)
 
+## Pruebas
+He creado unos elementos básicos de prueba: una carpeta con un documento y un enlalce. He añadido un usuario a la lista de usuarios autorizados, y he intentado entrar a todos los archivos tanto con el usuario autoizado como con uno no autorizado:
+![image](https://github.com/AnaLopezP/PatronesEstrEval/assets/34817139/c15f4ec7-4e60-4b4d-baa8-a567a5551494)
+
 
