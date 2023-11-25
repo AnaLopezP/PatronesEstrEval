@@ -18,3 +18,15 @@ if __name__ == "__main__":
     proxy_acceso.permitir_acceso("usuario1", documento1, "lectura")
     print("Intentando acceder al documento con el proxy...")
     proxy_acceso.permitir_acceso("usuario2", documento1, "lectura")
+    
+    #intentar acceder a la carpeta con el proxy
+    print("Intentando acceder a la carpeta con el proxy...")
+    proxy_acceso.permitir_acceso("usuario1", carpeta1, "lectura")
+    print("Intentando acceder a la carpeta con el proxy...")
+    proxy_acceso.permitir_acceso("usuario2", carpeta1, "lectura")
+    
+    #intentar acceder al enlace con el proxy
+    print("Intentando acceder al enlace con el proxy...")
+    proxy_acceso.permitir_acceso("usuario1", enlace1, "lectura")
+    print("Intentando acceder al enlace con el proxy...")
+    proxy_acceso.permitir_acceso("usuario2", enlace1, "lectura")
