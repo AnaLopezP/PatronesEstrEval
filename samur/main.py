@@ -14,8 +14,7 @@ if __name__ == "__main__":
     proxy_acceso.agregar_usuario_autorizado("usuario1")
 
     # Intentar acceder al documento con el proxy
-    if proxy_acceso.permitir_acceso("usuario1", documento1, "lectura"):
-        registros = proxy_acceso.obtener_registros_acceso(documento1)
-        print(f"Acceso permitido. Registros: {registros}")
-    else:
-        print("Acceso denegado.")
+    print("Intentando acceder al documento con el proxy...")
+    proxy_acceso.permitir_acceso("usuario1", documento1, "lectura")
+    print("Intentando acceder al documento con el proxy...")
+    proxy_acceso.permitir_acceso("usuario2", documento1, "lectura")
