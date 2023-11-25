@@ -1,5 +1,4 @@
 from datetime import datetime
-from typing import List, Tuple, Dict
 
 class Elemento:
     def __init__(self, nombre, tipo, tamaño):
@@ -16,7 +15,7 @@ class Elemento:
     def get_tamaño(self):
         return self.tamaño
 
-    def aceptar(self, visitante):
+    def aceptar(self, usuario, accion, proxy):
         pass
 
 class Documento(Elemento):
@@ -30,12 +29,12 @@ class Documento(Elemento):
     def modificar_contenido(self, nuevo_contenido):
         self.contenido = nuevo_contenido
 
-    def aceptar(self, visitante):
-        visitante.visitar_documento(self)
+    def aceptar(self, usuario, accion, proxy):
+        proxy.permitir_acceso(usuario, self, accion)
 
 class Enlace(Elemento):
-    def aceptar(self, visitante):
-        visitante.visitar_enlace(self)
+    def aceptar(self, usuario, accion, proxy):
+        proxy.permitir_acceso(usuario, self, accion)
 
 class Carpeta(Elemento):
     def __init__(self, nombre):
@@ -56,8 +55,10 @@ class Carpeta(Elemento):
     def get_tamaño(self):
         return sum(elemento.tamaño for elemento in self.elementos)
 
-    def aceptar(self, visitante):
-        visitante.visitar_carpeta(self)
+    def aceptar(self, usuario, accion, proxy):
+        proxy.permitir_acceso(usuario, self, accion)
+        for elemento in self.elementos:
+            elemento.aceptar(usuario, accion, proxy)
 
 class ProxyAcceso:
     def __init__(self):
