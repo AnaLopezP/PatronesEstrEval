@@ -1,5 +1,5 @@
 # PatronesEstrEval
-
+# PIZZERÍA
 ## PIZZERÍA INFORME:
 1)	Organización de los archivos:
 Para tener los archivos lo más organizados posibles, los he dividido en varias carpetas. Por una parte, tengo la carpeta “Pizzeria_Builder” donde está todo el código Python relacionado con los patrones de diseño y estructurales, y otras clases necesarias para la web.
@@ -38,6 +38,8 @@ Otupt:
 ![image](https://github.com/AnaLopezP/PatronesEstrEval/assets/34817139/32c8af43-52f2-4465-bda2-4105f9c8be30)
 ![image](https://github.com/AnaLopezP/PatronesEstrEval/assets/34817139/0ad240e2-76c3-4448-ac34-137f89e7c1f3)
 
-
+# SAMUR
+## UML
+![image](https://github.com/AnaLopezP/PatronesEstrEval/assets/34817139/48831ed4-025a-4dfb-8da7-2d584d8250e4)
 
 
