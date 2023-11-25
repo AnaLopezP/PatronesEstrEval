@@ -30,3 +30,6 @@ if __name__ == "__main__":
     proxy_acceso.permitir_acceso("usuario1", enlace1, "lectura")
     print("Intentando acceder al enlace con el proxy...")
     proxy_acceso.permitir_acceso("usuario2", enlace1, "lectura")
+    
+    #eliminar un elemento de la carpeta:
+    carpeta1.eliminar_elemento(enlace1)
